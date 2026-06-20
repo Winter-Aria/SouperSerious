@@ -6,6 +6,7 @@ func _ready() -> void:
 	var generator = MapGenerator.new()
 	mapNodes = generator.Generate()
 	print("Generated ", mapNodes.size(), " Nodes")
+	$PathLines.Setup(mapNodes)
 	for node in mapNodes:
 		SpawnNodeButton(node)
 		

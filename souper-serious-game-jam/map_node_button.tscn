@@ -3,8 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cgvyh40mydgh2" path="res://icon.svg" id="1_lwtow"]
 [ext_resource type="Script" uid="uid://cwukkrfifrh3x" path="res://Scripts/map_node_button.gd" id="2_edx8w"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edx8w"]
+
 [node name="MapNodeButton" type="Button" unique_id=485486876]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -16,5 +20,7 @@ offset_right = -32.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_edx8w")
 icon = ExtResource("1_lwtow")
+expand_icon = true
 script = ExtResource("2_edx8w")

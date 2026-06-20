@@ -1,27 +1,24 @@
 extends Button
 
 var mapNode: MapNode
+const ICONS = {
+	
+	MapNode.NodeType.COMBAT: preload("res://Art/MapIcon/CombatIcon.png"),
+	MapNode.NodeType.START: preload("res://Art/MapIcon/StartIcon.png"),
+	
+}
 
-func setup(nodeData:MapNode)-> void:
+
+func setup(nodeData: MapNode) -> void:
 	mapNode = nodeData
-	text = labelForNodeType(nodeData.type)
+	custom_minimum_size = Vector2(64, 64)
+	text = ""                          
+	icon = ICONS.get(nodeData.type)    
+	expand_icon = true 
 	position = nodeData.screenPos
 	pressed.connect(OnPressed)
 	
-func labelForNodeType(type: MapNode.NodeType) -> String:
-	match type:
-		MapNode.NodeType.START:
-			return "S"
-		MapNode.NodeType.COMBAT:
-			return "C"
-		MapNode.NodeType.WHEEL:
-			return "W"
-		MapNode.NodeType.GLOBAL_RULE:
-			return "G"
-		MapNode.NodeType.BOSS:
-			return "B"
-		_:
-			return "?"
+
 func OnPressed()-> void:
 	print("Clicked node: " , mapNode.id)
 			
