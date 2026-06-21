@@ -1,6 +1,7 @@
 extends Button
-
+signal NodeClicked(node: MapNode)
 var mapNode: MapNode
+
 const ICONS = {
 	
 	MapNode.NodeType.COMBAT: preload("res://Art/MapIcon/CombatIcon.png"),
@@ -9,7 +10,7 @@ const ICONS = {
 }
 
 
-func setup(nodeData: MapNode) -> void:
+func Setup(nodeData: MapNode) -> void:
 	mapNode = nodeData
 	custom_minimum_size = Vector2(64, 64)
 	text = ""                          
@@ -17,8 +18,20 @@ func setup(nodeData: MapNode) -> void:
 	expand_icon = true 
 	position = nodeData.screenPos
 	pressed.connect(OnPressed)
+	UpdateVisualState()
 	
 
-func OnPressed()-> void:
-	print("Clicked node: " , mapNode.id)
-			
+func OnPressed() -> void:
+	print("Button OnPressed fired for: ", mapNode.id)
+	NodeClicked.emit(mapNode)
+
+func UpdateVisualState() -> void:
+	if mapNode.visited:
+		modulate = Color(0.5, 0.5, 0.5, 1.0)
+		disabled = false
+	elif mapNode.available:
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		disabled = false
+	else:
+		modulate = Color(0.3, 0.3, 0.3, 0.6)
+		disabled = true
