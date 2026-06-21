@@ -2,8 +2,9 @@ extends Node2D
 
 var mapNodes: Array[MapNode] = []
 var nodeButtons: Dictionary = {}
-
+var traveledConnections: Dictionary = {}
 @export var MapButton: PackedScene
+var currentNodeId: String = "start"
 
 func _ready() -> void:
 	var generator = MapGenerator.new()
@@ -31,6 +32,13 @@ func OnNodeClicked(node: MapNode) -> void:
 	if not node.available:
 		return
 	
+
+	if currentNodeId != "":
+		var edgeKey = currentNodeId + "->" + node.id
+		traveledConnections[edgeKey] = true
+	
+	currentNodeId = node.id
+	
 	node.visited = true
 	node.available = false
 	
@@ -41,7 +49,7 @@ func OnNodeClicked(node: MapNode) -> void:
 	
 	LockSiblingsInSameRow(node)
 	RefreshAllButtons()
-	
+	$PathLines.SetTraveled(traveledConnections)  
 	$MapCamera.SetTarget(node)
 
 func LockSiblingsInSameRow(chosenNode: MapNode) -> void:
