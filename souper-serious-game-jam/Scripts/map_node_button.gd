@@ -6,6 +6,9 @@ const ICONS = {
 	
 	MapNode.NodeType.COMBAT: preload("res://Art/MapIcon/CombatIcon.png"),
 	MapNode.NodeType.START: preload("res://Art/MapIcon/StartIcon.png"),
+	MapNode.NodeType.WHEEL:preload("res://Art/MapIcon/WheelIcon.png"),
+	MapNode.NodeType.GLOBAL_RULE:preload("res://Art/MapIcon/RulePrinter.png"),
+	
 	
 }
 
