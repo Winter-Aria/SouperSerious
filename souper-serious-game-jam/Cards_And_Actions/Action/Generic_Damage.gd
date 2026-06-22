@@ -5,7 +5,7 @@ class_name Generic_Damage
 
 func Take_Action(_world_state : World_State, _card : Card) -> void:
 	var Damage_Flip_Count : int = GameModifers.Get_Active_Modifer_Count_That_Affect_Card(
-		Parent_Card, GameModifers.Heal_Flip
+		_card, GameModifers.Heal_Flip
 	)
 	
 	var Do_Damage_Flip : bool = (

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://1gruqtr4e6m3"]
-
-[ext_resource type="Script" uid="uid://bwgsgskih0foy" path="res://Shitty_Slay_Spire/test_scene.gd" id="1_yh8te"]
-
-[node name="TestScene" type="Node2D" unique_id=310610965]
-script = ExtResource("1_yh8te")

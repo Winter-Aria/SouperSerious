@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b0h42mh0e2f1d"]
+
+[ext_resource type="Script" uid="uid://cnsmfwf7gnheo" path="res://Scripts/Battle_System/battle_scene.gd" id="1_hdvqd"]
+[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Mouse_Detector.gd" id="2_anwxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lw2f"]
+size = Vector2(330, 265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn0dq"]
+size = Vector2(530, 339)
+
+[node name="Battle_Scene" type="Node2D" unique_id=904420090]
+script = ExtResource("1_hdvqd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1370114107]
+
+[node name="Card_Holder" type="Node2D" parent="." unique_id=832649868]
+position = Vector2(0, 434)
+
+[node name="Player" type="Node2D" parent="." unique_id=319101816]
+position = Vector2(-665, -9)
+
+[node name="Player_Placeholder" type="Polygon2D" parent="Player" unique_id=879070472]
+color = Color(0.49320003, 0.8, 0.488, 1)
+polygon = PackedVector2Array(-44, -63, -36, -127, -13, -111, 8, -110, 36, -127, 28, -55, 159, -74, 133, -35, 24, -19, 20, 23, 48, 113, 11, 129, -14, 23, -37, 134, -78, 121, -40, 21, -52, -27, -162, -11, -154, -44)
+
+[node name="Area2D" type="Area2D" parent="Player" unique_id=800485139]
+collision_layer = 2147483648
+collision_mask = 0
+script = ExtResource("2_anwxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D" unique_id=1978104324]
+position = Vector2(8, 9.5)
+shape = SubResource("RectangleShape2D_3lw2f")
+
+[node name="Enemy" type="Node2D" parent="." unique_id=71026432]
+position = Vector2(608, -29)
+
+[node name="Enemy_Placeholder" type="Polygon2D" parent="Enemy" unique_id=1797873252]
+color = Color(0.4698974, 0.18810302, 0.133113, 1)
+polygon = PackedVector2Array(-259, -9, -90, -51, -48, -120, 104, -110, 125, -21, 213, -8, 269, 39, 265, 75, 184, 92, 140, 36, 48, 76, 31, 141, 111, 177, 73, 205, -34, 162, -17, 102, -84, 110, -112, 166, -227, 141, -281, 104, -157, 64, -166, 20)
+
+[node name="Area2D" type="Area2D" parent="Enemy" unique_id=806813726]
+collision_layer = 2147483648
+collision_mask = 0
+script = ExtResource("2_anwxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D" unique_id=207144055]
+position = Vector2(-8, 46.5)
+shape = SubResource("RectangleShape2D_gn0dq")
+
+[connection signal="mouse_entered" from="Player/Area2D" to="Player/Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Player/Area2D" to="Player/Area2D" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Enemy/Area2D" to="Enemy/Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Enemy/Area2D" to="Enemy/Area2D" method="_on_mouse_exited"]

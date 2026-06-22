@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnp5f5hgsntxr"]
 
 [ext_resource type="Texture2D" uid="uid://caa1duor5ipr5" path="res://Art/SpinnerWheel/wheel_spinny.png" id="1_cvt8d"]
-[ext_resource type="Script" uid="uid://crjupgu66lt8a" path="res://wheel_encouter.gd" id="1_kasfk"]
+[ext_resource type="Script" uid="uid://crjupgu66lt8a" path="res://Scripts/wheel_encouter.gd" id="1_kasfk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvt8d"]
 atlas = ExtResource("1_cvt8d")
