@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://gjmwm8n1nvex" path="res://Scripts/map_screen.gd" id="1_tkw7f"]
 [ext_resource type="Texture2D" uid="uid://cgvyh40mydgh2" path="res://icon.svg" id="1_tmbxf"]
 [ext_resource type="PackedScene" uid="uid://cymt85imc0mp0" path="res://map_node_button.tscn" id="2_wcttb"]
+[ext_resource type="PackedScene" uid="uid://75ivh5op4uy0" path="res://player_marker.tscn" id="3_1qph8"]
+[ext_resource type="PackedScene" uid="uid://cnp5f5hgsntxr" path="res://SpinThatWheel.tscn" id="3_w4cr0"]
 [ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://path_lines.gd" id="4_vmmbu"]
 [ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://map_camera.gd" id="5_pc8n1"]
 
 [node name="MapScreen" type="Node2D" unique_id=7276114]
 script = ExtResource("1_tkw7f")
 MapButton = ExtResource("2_wcttb")
+PlayerMarkerScene = ExtResource("3_1qph8")
+WheelEncounterScene = ExtResource("3_w4cr0")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=931885819]
 scale = Vector2(15.625, 9.437501)

@@ -1,7 +1,7 @@
 extends Node2D
 class_name MapGenerator
 
-const ROWS = 5
+const ROWS = 9
 const MIN_NODES_PER_ROW = 2
 const MAX_NODES_PER_ROW = 4
 const COLUMN_SPACING = 120
