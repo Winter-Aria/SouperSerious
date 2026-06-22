@@ -5,6 +5,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edx8w"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6omsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnwax"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeqmf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lls7k"]
+
 [node name="MapNodeButton" type="Button" unique_id=485486876]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
@@ -21,6 +29,10 @@ offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_edx8w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6omsp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vnwax")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xeqmf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lls7k")
 icon = ExtResource("1_lwtow")
 expand_icon = true
 script = ExtResource("2_edx8w")
