@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="SouperSeriousGameJam"
-run/main_scene="uid://bkyrueo3rb3e0"
+run/main_scene="uid://d36sk75ua45gs"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
