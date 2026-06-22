@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://d36sk75ua45gs"]
 
 [ext_resource type="Script" uid="uid://gjmwm8n1nvex" path="res://Scripts/map_screen.gd" id="1_tkw7f"]
-[ext_resource type="Texture2D" uid="uid://cgvyh40mydgh2" path="res://icon.svg" id="1_tmbxf"]
 [ext_resource type="PackedScene" uid="uid://cymt85imc0mp0" path="res://map_node_button.tscn" id="2_wcttb"]
 [ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://path_lines.gd" id="4_vmmbu"]
 [ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://map_camera.gd" id="5_pc8n1"]
+[ext_resource type="Texture2D" uid="uid://o03akv7r11k4" path="res://Art/MapBackground/MapBackground.png" id="6_w4cr0"]
 
 [node name="MapScreen" type="Node2D" unique_id=7276114]
 script = ExtResource("1_tkw7f")
 MapButton = ExtResource("2_wcttb")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=931885819]
-scale = Vector2(15.625, 9.437501)
-texture = ExtResource("1_tmbxf")
 
 [node name="PathLines" type="Node2D" parent="." unique_id=952606393]
 scale = Vector2(2.4393706, 2.441481)
@@ -23,3 +19,10 @@ scale = Vector2(2.4393706, 2.441481)
 
 [node name="MapCamera" type="Camera2D" parent="." unique_id=651328710]
 script = ExtResource("5_pc8n1")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1641573354]
+z_index = -4
+texture_filter = 1
+position = Vector2(1.3552527e-20, -3555)
+scale = Vector2(5.859863, 5.859863)
+texture = ExtResource("6_w4cr0")
