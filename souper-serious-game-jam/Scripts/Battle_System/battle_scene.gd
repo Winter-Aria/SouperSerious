@@ -11,6 +11,8 @@ const RED_HEALER = preload("uid://don58r81pvpe5")
 const RED_DAMAGER = preload("uid://hbkgi6sj1vkc")
 const YELLOW_HEALER = preload("uid://duwt40itidqk5")
 
+
+
 @onready var card_holder: Node2D = $Card_Holder
 
 @onready var Player_Moused: Mouse_Detector = $Player/Area2D
@@ -32,7 +34,9 @@ var World := World_State.new()
 
 func _ready() -> void:
 	for i in range(5):
-		Hand.append(Draw_Pile_Cards.pick_random())
+		var drawn_card : Card = Draw_Pile_Cards.pick_random()
+		Hand.append(drawn_card)
+		Draw_Pile_Cards.erase(drawn_card)
 	
 	for _card : Card in Hand:
 		var New_Visual : Card_Visual = CARD_VISUAL.instantiate()
