@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b64g3rga5doqa"]
+
+[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Mouse_Detector.gd" id="1_e5af7"]
+
+[node name="MouseDetector" type="Area2D" unique_id=432678138]
+collision_layer = 2147483648
+collision_mask = 0
+script = ExtResource("1_e5af7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
