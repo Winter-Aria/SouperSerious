@@ -47,12 +47,14 @@ func SpawnNodeButton(nodeData: MapNode) -> void:
 
 func SpawnMapDecorations(nodes: Array[MapNode]):
 	var things_to_avoid = nodes.map(func(x): return x.screenPos)
-	for x in range(7):
-		for y in range(20):
-			var pos = Vector2(x-3, 5-y) * 150
-			pos += Vector2(randf(), randf()) * randf_range(1, 100)
-			if SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos)):
-				things_to_avoid.append(pos)
+	const BUFFER_SPACE = 400
+	var bg_size = $Background.texture.get_size() * $Background.scale * 0.8
+	var bg_pos = $Background.position
+	for y in range(100):
+		var pos = Vector2(randf_range(0, bg_size.x), randf_range(0, bg_size.y)) - bg_size / 2 + bg_pos
+		pos /= $NodeContainer.scale
+		if SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos)):
+			things_to_avoid.append(pos)
 			
 func DistToClosest(positions, target: Vector2):
 	var closest = INF
@@ -64,12 +66,13 @@ func DistToClosest(positions, target: Vector2):
 
 func SpawnMapDecoration(pos, distance) -> bool:
 	var texture = MapDecorationTextures.pick_random()
-	if randf_range(texture.get_size().length(), 200) > distance: # reduce chance to spawn close to nodes
+	if texture.get_size().length() * 1.3 > distance: # reduce chance to spawn close to nodes
 		return false
-		
+	
 	var decoration = Sprite2D.new()
 	decoration.texture = texture
 	decoration.position = pos
+	decoration.rotation_degrees = randf_range(-10, 10)
 	$NodeContainer.add_child(decoration)
 	return true
 
