@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cu10v4plkn3gj" path="res://Art/MapBackground/Scribbles/pig-bro.png" id="13_sks68"]
 [ext_resource type="Texture2D" uid="uid://bg7bcmbmgs606" path="res://Art/MapBackground/Scribbles/incsoc.png" id="14_fmany"]
 [ext_resource type="Texture2D" uid="uid://qdp7p1wpgrr7" path="res://Art/MapBackground/Scribbles/aminal-farm.png" id="14_wihhg"]
+[ext_resource type="Texture2D" uid="uid://cxoaxiwxhu811" path="res://Art/MapBackground/Scribbles/Smile!.png" id="15_fmany"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w7vf1"]
 load_path = "res://.godot/imported/map.png-75c779b971b696332fa150f9f203b841.ctex"
@@ -26,7 +27,7 @@ MapButton = ExtResource("2_wcttb")
 PlayerMarkerScene = ExtResource("3_1qph8")
 WheelEncounterScene = ExtResource("3_w4cr0")
 GlobalRuleEncounterScene = ExtResource("5_w06ng")
-MapDecorationTextures = Array[Texture2D]([ExtResource("14_wihhg"), ExtResource("12_2tl4v"), ExtResource("10_fmany"), ExtResource("11_tvra4"), ExtResource("13_sks68"), ExtResource("9_w7vf1"), ExtResource("8_p6t3h"), ExtResource("7_enwxo"), ExtResource("14_fmany")])
+MapDecorationTextures = Array[Texture2D]([ExtResource("14_wihhg"), ExtResource("12_2tl4v"), ExtResource("10_fmany"), ExtResource("11_tvra4"), ExtResource("13_sks68"), ExtResource("9_w7vf1"), ExtResource("8_p6t3h"), ExtResource("7_enwxo"), ExtResource("14_fmany"), ExtResource("15_fmany")])
 
 [node name="PathLines" type="Node2D" parent="." unique_id=952606393]
 scale = Vector2(2.4393706, 2.441481)
