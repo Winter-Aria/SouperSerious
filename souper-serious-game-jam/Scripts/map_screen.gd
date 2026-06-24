@@ -6,9 +6,14 @@ var traveledConnections: Dictionary = {}
 var currentNodeId: String = "start"
 var playerMarker: Node2D
 
+var collectedCauses: Array[RuleCause] = []
+var collectedEffects: Array[RuleEffect] = []
+var activeRules: Array[ActiveRule] = []
+
 @export var MapButton: PackedScene
 @export var PlayerMarkerScene: PackedScene
 @export var WheelEncounterScene: PackedScene
+@export var GlobalRuleEncounterScene: PackedScene
 
 func _ready() -> void:
 	var generator = MapGenerator.new()
@@ -26,17 +31,8 @@ func _ready() -> void:
 	add_child(playerMarker)
 	
 	var startNode = FindNodeById("start")
-	var startNextRow = GetNextRowNodes(startNode)
 	$MapCamera.SetTarget(startNode)
 	MovePlayerMarkerTo(startNode)
-
-func GetNextRowNodes(node: MapNode) -> Array[MapNode]:
-	var nextRowNodes: Array[MapNode] = []
-	for connId in node.connections:
-		var target = FindNodeById(connId)
-		if target:
-			nextRowNodes.append(target)
-	return nextRowNodes
 
 func SpawnNodeButton(nodeData: MapNode) -> void:
 	var button = MapButton.instantiate()
@@ -70,11 +66,13 @@ func OnNodeClicked(node: MapNode) -> void:
 	LockSiblingsInSameRow(node)
 	RefreshAllButtons()
 	$PathLines.SetTraveled(traveledConnections)
+	
 	$MapCamera.SetTarget(node)
 	MovePlayerMarkerTo(node)
+	
 	if node.type != MapNode.NodeType.START:
 		TriggerEncounter(node)
-		
+
 func TriggerEncounter(node: MapNode) -> void:
 	match node.type:
 		MapNode.NodeType.WHEEL:
@@ -84,9 +82,14 @@ func TriggerEncounter(node: MapNode) -> void:
 			wheelInstance.tree_exited.connect(OnEncounterClosed)
 			self.visible = false
 			set_process_input(false)
-		MapNode.NodeType.COMBAT:
-			pass
 		MapNode.NodeType.GLOBAL_RULE:
+			var ruleInstance = GlobalRuleEncounterScene.instantiate()
+			get_tree().root.add_child(ruleInstance)
+			ruleInstance.Setup(self)
+			ruleInstance.tree_exited.connect(OnEncounterClosed)
+			self.visible = false
+			set_process_input(false)
+		MapNode.NodeType.COMBAT:
 			pass
 		MapNode.NodeType.BOSS:
 			pass
@@ -94,6 +97,7 @@ func TriggerEncounter(node: MapNode) -> void:
 func OnEncounterClosed() -> void:
 	self.visible = true
 	set_process_input(true)
+	$MapCamera.make_current()
 
 func LockSiblingsInSameRow(chosenNode: MapNode) -> void:
 	for node in mapNodes:

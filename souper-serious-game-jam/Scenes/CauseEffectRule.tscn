@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dc212pest7jqu"]
+
+[ext_resource type="Script" uid="uid://dier3dbkoegkj" path="res://Scenes/global_rule.gd" id="1_75i0n"]
+
+[node name="GlobalRule" type="Control" unique_id=167755213 node_paths=PackedStringArray("newItemPromptLabel", "option1Button", "option2Button", "causeOptionsContainer", "effectOptionsContainer", "confirmButton", "continueButton")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_75i0n")
+newItemPromptLabel = NodePath("NewItemLabel")
+option1Button = NodePath("Option1")
+option2Button = NodePath("Option2")
+causeOptionsContainer = NodePath("CauseList")
+effectOptionsContainer = NodePath("EffectList")
+confirmButton = NodePath("Confirm")
+continueButton = NodePath("Continue")
+
+[node name="CauseList" type="VBoxContainer" parent="." unique_id=80174119]
+layout_mode = 0
+offset_left = 165.0
+offset_top = -133.0
+offset_right = 205.0
+offset_bottom = -93.0
+
+[node name="EffectList" type="VBoxContainer" parent="." unique_id=148304789]
+layout_mode = 0
+offset_left = 362.0
+offset_top = -131.0
+offset_right = 402.0
+offset_bottom = -91.0
+
+[node name="NewItemLabel" type="Label" parent="." unique_id=465352683]
+layout_mode = 0
+offset_left = 227.0
+offset_top = -176.0
+offset_right = 298.0
+offset_bottom = -137.0
+horizontal_alignment = 1
+
+[node name="Confirm" type="Button" parent="." unique_id=1578345682]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 166.0
+offset_right = 500.0
+offset_bottom = 197.0
+text = "Confirm"
+
+[node name="Continue" type="Button" parent="." unique_id=708421926]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 166.0
+offset_right = 609.0
+offset_bottom = 197.0
+text = "Continue"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=977542475]
+position = Vector2(270, 11)
+zoom = Vector2(2.495, 2.495)
+
+[node name="Option1" type="Button" parent="." unique_id=1769967410]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 176.0
+offset_bottom = 31.0
+text = "option 1"
+
+[node name="Option2" type="Button" parent="." unique_id=1703903856]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 1.0
+offset_right = 441.0
+offset_bottom = 32.0
+text = "option 2"
