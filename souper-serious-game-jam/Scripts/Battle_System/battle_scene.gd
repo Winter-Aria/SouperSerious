@@ -16,7 +16,7 @@ const YELLOW_HEALER = preload("uid://duwt40itidqk5")
 @onready var card_holder: Node2D = $Card_Holder
 
 @onready var Player_Moused: Mouse_Detector = $Player/Area2D
-@onready var Enemy_Moused: Mouse_Detector = $Enemy/Area2D
+@onready var Enemy_Moused: Mouse_Detector = $Enemy.mouse_detector
 
 var Draw_Pile_Cards : Array[Card] = [
 	RED_HEALER.duplicate_deep(), RED_HEALER.duplicate_deep(), RED_HEALER.duplicate_deep(),
