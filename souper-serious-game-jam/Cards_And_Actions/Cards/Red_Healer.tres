@@ -14,5 +14,5 @@ Held_Attributes = Array[int]([0, 5])
 Cost = 1
 Base_Action = SubResource("Resource_p5o83")
 Description = "Heals 5 HP."
-Applicability_Flags = 1
+Applicability_Flags = 3
 metadata/_custom_type_script = "uid://6wpcejba1e4h"

@@ -11,8 +11,10 @@ const CARD_VISUAL = preload("uid://bkyrueo3rb3e0")
 
 @onready var card_holder: Node2D = $Card_Holder
 
+@onready var enemy_1: enemy_visual = $Enemy1
+
 @onready var Player_Moused: Mouse_Detector = $Player/Area2D
-@onready var Enemy_Moused: Mouse_Detector = $Enemy.mouse_detector
+@onready var Enemy_Moused: Mouse_Detector = enemy_1.mouse_detector
 
 var Card_Visuals : Array[Card_Visual] = []
 var Hand_Card_To_Visual_Card : Dictionary[Card, Card_Visual] = {}
@@ -21,10 +23,10 @@ var Held_Card_Visual : Card_Visual = null
 
 var World := World_State.new()
 
-
-
 func _ready() -> void:
 	World.World_Player = PLAYER.duplicate_deep()
+	
+	World.World_Player.Draw_Cards(5)
 	
 	for _card : Card in World.World_Player.Hand:
 		var New_Visual : Card_Visual = CARD_VISUAL.instantiate()
@@ -37,7 +39,6 @@ func _ready() -> void:
 		New_Visual.Set_Visual_Based_Off_Card(_card)
 		
 		Hand_Card_To_Visual_Card[_card] = New_Visual
-
 
 func _process(_delta: float) -> void:
 	var card_count : float = Card_Visuals.size()
@@ -90,8 +91,8 @@ func On_Card_Visual_Picked_Dropped(_card : Card_Visual) -> void:
 	
 	Held_Card_Visual = null
 
-const Player_Flags : int = Card.Applicability.Player
-const Enemy_Flags : int = Card.Applicability.Hostile
+const Player_Flags : int = Card.Casting_Type.Self
+const Enemy_Flags : int = Card.Casting_Type.Hostiles
 
 func attempt_apply_card(_card : Card) -> bool:
 	if Player_Moused.Mouse_Within:

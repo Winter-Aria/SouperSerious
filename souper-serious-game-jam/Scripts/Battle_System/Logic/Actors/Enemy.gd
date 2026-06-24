@@ -25,6 +25,8 @@ func _init() -> void:
 
 func End_Of_Turn_Reset() -> void:
 	super.End_Of_Turn_Reset()
+	
+	choose_next_card()
 
 func choose_next_card() -> void:
 	if Card_Choosing_Behaviour == Card_Choosing_Behaviour_Type.Ordered:

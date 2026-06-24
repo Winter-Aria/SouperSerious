@@ -15,7 +15,7 @@ var Hand : Array[Card] = []
 
 func Draw_Cards(_cards_to_draw : int) -> int:
 	var _cards_dawn : int = 0 
-	for i in range(_cards_dawn):
+	for i in range(_cards_to_draw):
 		if Draw_Pile_Cards.is_empty():
 			break
 		
