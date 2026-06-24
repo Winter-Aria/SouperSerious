@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://75ivh5op4uy0"]
 
+[ext_resource type="Texture2D" uid="uid://bkf5a8sidqmp4" path="res://Art/MapIcon/PlayerFlag.png" id="1_52w7p"]
+
 [node name="PlayerMarker" type="Node2D" unique_id=866250155]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1940874280]
+texture_filter = 1
+position = Vector2(11, -26)
+scale = Vector2(1.286819, 1.286819)
+texture = ExtResource("1_52w7p")

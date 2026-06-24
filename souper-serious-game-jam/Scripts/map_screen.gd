@@ -32,7 +32,7 @@ func _ready() -> void:
 	RefreshAllButtons()
 	
 	playerMarker = PlayerMarkerScene.instantiate()
-	add_child(playerMarker)
+	$NodeContainer.add_child(playerMarker)
 	
 	var startNode = FindNodeById("start")
 	$MapCamera.SetTarget(startNode)
@@ -66,7 +66,7 @@ func DistToClosest(positions, target: Vector2):
 
 func SpawnMapDecoration(pos, distance) -> bool:
 	var texture = MapDecorationTextures.pick_random()
-	if texture.get_size().length() * 1.3 > distance: # reduce chance to spawn close to nodes
+	if texture.get_size().length() * 1.3 > distance:
 		return false
 	
 	var decoration = Sprite2D.new()
@@ -77,8 +77,7 @@ func SpawnMapDecoration(pos, distance) -> bool:
 	return true
 
 func MovePlayerMarkerTo(node: MapNode) -> void:
-	var nodeCenter = node.screenPos + Vector2(32, 32)
-	playerMarker.position = nodeCenter
+	playerMarker.position = node.screenPos + Vector2(32, 32)
 
 func OnNodeClicked(node: MapNode) -> void:
 	if not node.available:

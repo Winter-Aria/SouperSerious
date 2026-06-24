@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b06now6cnbgwv"]
+
+[ext_resource type="Script" uid="uid://csylaqyoymu0n" path="res://Scenes/cutscene_player.gd" id="1_mnrue"]
+
+[node name="CutscenePlayer" type="Control" unique_id=1910599913 node_paths=PackedStringArray("imageDisplay", "textLabel")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mnrue")
+imageDisplay = NodePath("TextureRect")
+textLabel = NodePath("RichTextLabel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=512597901]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(53.631596, 28.867208)
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=30715303]
+layout_mode = 0
+offset_right = 1918.0
+offset_bottom = 665.0
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1937383759]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 802.0
+offset_right = 1962.0
+offset_bottom = 1078.0
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+bbcode_enabled = true
+text = "Hello world "
