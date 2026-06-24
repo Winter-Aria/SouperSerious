@@ -66,7 +66,8 @@ func DistToClosest(positions, target: Vector2):
 
 func SpawnMapDecoration(pos, distance) -> bool:
 	var texture = MapDecorationTextures.pick_random()
-	if texture.get_size().length() * 1.3 > distance:
+	var texSize = texture.get_size().length()
+	if texSize * 0.8 > distance:  
 		return false
 	
 	var decoration = Sprite2D.new()
