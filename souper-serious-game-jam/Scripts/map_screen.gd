@@ -15,6 +15,8 @@ var activeRules: Array[ActiveRule] = []
 @export var WheelEncounterScene: PackedScene
 @export var GlobalRuleEncounterScene: PackedScene
 
+@export var MapDecorationTextures: Array[Texture2D]
+
 func _ready() -> void:
 	var generator = MapGenerator.new()
 	mapNodes = generator.Generate()
@@ -24,6 +26,8 @@ func _ready() -> void:
 	
 	for node in mapNodes:
 		SpawnNodeButton(node)
+	
+	SpawnMapDecorations(mapNodes)
 	
 	RefreshAllButtons()
 	
@@ -40,6 +44,34 @@ func SpawnNodeButton(nodeData: MapNode) -> void:
 	button.Setup(nodeData)
 	button.NodeClicked.connect(OnNodeClicked)
 	nodeButtons[nodeData.id] = button
+
+func SpawnMapDecorations(nodes: Array[MapNode]):
+	var things_to_avoid = nodes.map(func(x): return x.screenPos)
+	for x in range(7):
+		for y in range(20):
+			var pos = Vector2(x-3, 5-y) * 150
+			pos += Vector2(randf(), randf()) * randf_range(1, 100)
+			if SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos)):
+				things_to_avoid.append(pos)
+			
+func DistToClosest(positions, target: Vector2):
+	var closest = INF
+	for pos in positions:
+		var distance_to_pos = target.distance_squared_to(pos)
+		if distance_to_pos < closest:
+			closest = distance_to_pos
+	return sqrt(closest)
+
+func SpawnMapDecoration(pos, distance) -> bool:
+	var texture = MapDecorationTextures.pick_random()
+	if randf_range(texture.get_size().length(), 200) > distance: # reduce chance to spawn close to nodes
+		return false
+		
+	var decoration = Sprite2D.new()
+	decoration.texture = texture
+	decoration.position = pos
+	$NodeContainer.add_child(decoration)
+	return true
 
 func MovePlayerMarkerTo(node: MapNode) -> void:
 	var nodeCenter = node.screenPos + Vector2(32, 32)
