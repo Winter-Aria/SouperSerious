@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b64g3rga5doqa"]
 
-[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Mouse_Detector.gd" id="1_e5af7"]
+[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Visual-Interaction/Mouse_Detector.gd" id="1_e5af7"]
 
 [node name="MouseDetector" type="Area2D" unique_id=432678138]
 collision_layer = 2147483648

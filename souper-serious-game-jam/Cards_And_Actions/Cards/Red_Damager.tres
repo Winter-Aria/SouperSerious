@@ -14,5 +14,5 @@ Held_Attributes = Array[int]([0, 4])
 Cost = 4
 Base_Action = SubResource("Resource_maasq")
 Description = "Deals 6 Damage. "
-Applicability_Flags = 2
+Applicability_Flags = 4
 metadata/_custom_type_script = "uid://6wpcejba1e4h"

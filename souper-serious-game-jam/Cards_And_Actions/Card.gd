@@ -11,10 +11,11 @@ enum Atrributes
 	Healing,
 }
 
-enum Applicability
+enum Casting_Type
 {
-	Player  = 1 << 0, 
-	Hostile = 1 << 1,
+	Self  = 1 << 0, 
+	Friendlies = 1 << 1,
+	Hostiles = 1 << 2,
 }
 
 @export var Held_Attributes : Array[Atrributes] = []
@@ -23,7 +24,7 @@ enum Applicability
 
 @export_multiline var Description : String = ""
 
-@export_flags("Player", "Hostile") var Applicability_Flags : int = 0
+@export_flags("Self", "Friendlies", "Hostiles") var Applicability_Flags : int = 0
 
 func Take_Cards_Action(_world_state : World_State) -> void:
 	Base_Action.Take_Action(_world_state, self)

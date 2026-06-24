@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0h42mh0e2f1d"]
 
-[ext_resource type="Script" uid="uid://cnsmfwf7gnheo" path="res://Scripts/Battle_System/battle_scene.gd" id="1_hdvqd"]
-[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Mouse_Detector.gd" id="2_anwxn"]
+[ext_resource type="Script" uid="uid://cnsmfwf7gnheo" path="res://Scripts/Battle_System/Visual-Interaction/battle_scene.gd" id="1_hdvqd"]
+[ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Visual-Interaction/Mouse_Detector.gd" id="2_anwxn"]
 [ext_resource type="PackedScene" uid="uid://ckfq8an488iu" path="res://Scenes/enemy_1.tscn" id="3_anwxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lw2f"]
