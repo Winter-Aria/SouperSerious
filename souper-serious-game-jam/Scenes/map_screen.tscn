@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://Scripts/path_lines.gd" id="4_vmmbu"]
 [ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://Scripts/map_camera.gd" id="5_pc8n1"]
 [ext_resource type="PackedScene" uid="uid://dc212pest7jqu" path="res://Scenes/CauseEffectRule.tscn" id="5_w06ng"]
-[ext_resource type="Texture2D" uid="uid://o03akv7r11k4" path="res://Art/MapBackground/MapBackground.png" id="6_w4cr0"]
+[ext_resource type="Texture2D" uid="uid://ch7yt2a3popev" path="res://Art/MapBackground/map.png" id="5_w4cr0"]
 
 [node name="MapScreen" type="Node2D" unique_id=7276114]
 script = ExtResource("1_tkw7f")
@@ -31,4 +31,4 @@ z_index = -4
 texture_filter = 1
 position = Vector2(-32.000004, -3192.0002)
 scale = Vector2(5.859863, 5.859863)
-texture = ExtResource("6_w4cr0")
+texture = ExtResource("5_w4cr0")
