@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://duwt40itidqk5"]
+
+[ext_resource type="Script" uid="uid://cu5v0ou0sbhey" path="res://Cards_And_Actions/Action/Generic_Heal.gd" id="1_hyx3d"]
+[ext_resource type="Script" uid="uid://6wpcejba1e4h" path="res://Cards_And_Actions/Card.gd" id="1_voks4"]
+
+[sub_resource type="Resource" id="Resource_hyx3d"]
+script = ExtResource("1_hyx3d")
+Heal_Amount = 2
+metadata/_custom_type_script = "uid://cu5v0ou0sbhey"
+
+[resource]
+script = ExtResource("1_voks4")
+Held_Attributes = Array[int]([3, 5])
+Cost = 1
+Base_Action = SubResource("Resource_hyx3d")
+Description = "Heals 2 HP."
+Applicability_Flags = 1
+metadata/_custom_type_script = "uid://6wpcejba1e4h"

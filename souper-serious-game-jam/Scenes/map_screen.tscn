@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://d36sk75ua45gs"]
 
 [ext_resource type="Script" uid="uid://gjmwm8n1nvex" path="res://Scripts/map_screen.gd" id="1_tkw7f"]
-[ext_resource type="PackedScene" uid="uid://cymt85imc0mp0" path="res://map_node_button.tscn" id="2_wcttb"]
-[ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://path_lines.gd" id="4_vmmbu"]
-[ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://map_camera.gd" id="5_pc8n1"]
+[ext_resource type="PackedScene" uid="uid://cymt85imc0mp0" path="res://Scenes/map_node_button.tscn" id="2_wcttb"]
+[ext_resource type="PackedScene" uid="uid://75ivh5op4uy0" path="res://Scenes/player_marker.tscn" id="3_1qph8"]
+[ext_resource type="PackedScene" uid="uid://cnp5f5hgsntxr" path="res://Scenes/SpinThatWheel.tscn" id="3_w4cr0"]
+[ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://Scripts/path_lines.gd" id="4_vmmbu"]
+[ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://Scripts/map_camera.gd" id="5_pc8n1"]
 [ext_resource type="Texture2D" uid="uid://ch7yt2a3popev" path="res://Art/MapBackground/map.png" id="5_w4cr0"]
 
 [node name="MapScreen" type="Node2D" unique_id=7276114]
 script = ExtResource("1_tkw7f")
 MapButton = ExtResource("2_wcttb")
+PlayerMarkerScene = ExtResource("3_1qph8")
+WheelEncounterScene = ExtResource("3_w4cr0")
 
 [node name="PathLines" type="Node2D" parent="." unique_id=952606393]
 scale = Vector2(2.4393706, 2.441481)
@@ -23,6 +27,6 @@ script = ExtResource("5_pc8n1")
 [node name="Background" type="Sprite2D" parent="." unique_id=1641573354]
 z_index = -4
 texture_filter = 1
-position = Vector2(1.3552527e-20, -3555)
+position = Vector2(-7.9999695, -6504.0005)
 scale = Vector2(5.859863, 5.859863)
 texture = ExtResource("5_w4cr0")

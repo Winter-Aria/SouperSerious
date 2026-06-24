@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://hbkgi6sj1vkc"]
+
+[ext_resource type="Script" uid="uid://5ttbcir0snrr" path="res://Cards_And_Actions/Action/Generic_Damage.gd" id="1_r3nkr"]
+[ext_resource type="Script" uid="uid://6wpcejba1e4h" path="res://Cards_And_Actions/Card.gd" id="2_mv4ii"]
+
+[sub_resource type="Resource" id="Resource_maasq"]
+script = ExtResource("1_r3nkr")
+Damage_Amount = 6
+metadata/_custom_type_script = "uid://5ttbcir0snrr"
+
+[resource]
+script = ExtResource("2_mv4ii")
+Held_Attributes = Array[int]([0, 4])
+Cost = 4
+Base_Action = SubResource("Resource_maasq")
+Description = "Deals 6 Damage. "
+Applicability_Flags = 2
+metadata/_custom_type_script = "uid://6wpcejba1e4h"

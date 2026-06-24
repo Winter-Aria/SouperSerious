@@ -1,7 +1,7 @@
 extends Node2D
 class_name MapGenerator
 
-const ROWS = 5
+const ROWS = 15
 const MIN_NODES_PER_ROW = 2
 const MAX_NODES_PER_ROW = 4
 const COLUMN_SPACING = 120
@@ -35,7 +35,9 @@ func Generate() -> Array[MapNode]:
 	for row_i in range(rows.size() - 1):
 		ConnectRows(rows[row_i], rows[row_i + 1])
 	
-	# Player starts already at 'start' -- unlock its direct connections immediately
+	EnsureBriefcasePairs(allNodes)
+	
+	
 	for connId in start.connections:
 		var target = FindNodeByIdInList(connId, allNodes)
 		if target:
@@ -61,12 +63,51 @@ func MakeNode(id: String, type: MapNode.NodeType, gridPos: Vector2i) -> MapNode:
 
 
 func RandomType() -> MapNode.NodeType:
-	var choices = [
-		MapNode.NodeType.COMBAT,
-		MapNode.NodeType.WHEEL,
-		MapNode.NodeType.GLOBAL_RULE,
-	]
-	return choices[randi() % choices.size()]
+	var roll = randf()
+	if roll < 0.65:
+		return MapNode.NodeType.COMBAT
+	elif roll < 0.85:
+		return MapNode.NodeType.WHEEL
+	else:
+		return MapNode.NodeType.GLOBAL_RULE
+
+
+func EnsureBriefcasePairs(allNodes: Array[MapNode]) -> void:
+	for node in allNodes:
+		if node.type == MapNode.NodeType.GLOBAL_RULE:
+			if not BranchHasAnotherBriefcase(node, allNodes):
+				ForceBriefcaseAhead(node, allNodes)
+
+
+func BranchHasAnotherBriefcase(startNode: MapNode, allNodes: Array[MapNode]) -> bool:
+	var toVisit: Array[String] = startNode.connections.duplicate()
+	var visited: Dictionary = {}
+	
+	while toVisit.size() > 0:
+		var currentId = toVisit.pop_back()
+		if visited.has(currentId):
+			continue
+		visited[currentId] = true
+		
+		var current = FindNodeByIdInList(currentId, allNodes)
+		if current == null:
+			continue
+		
+		if current.type == MapNode.NodeType.GLOBAL_RULE:
+			return true
+		
+		for connId in current.connections:
+			toVisit.append(connId)
+	
+	return false
+
+
+func ForceBriefcaseAhead(startNode: MapNode, allNodes: Array[MapNode]) -> void:
+	if startNode.connections.size() > 0:
+		var nextId = startNode.connections[0]
+		var nextNode = FindNodeByIdInList(nextId, allNodes)
+		if nextNode and nextNode.type != MapNode.NodeType.BOSS and nextNode.type != MapNode.NodeType.START:
+			nextNode.type = MapNode.NodeType.GLOBAL_RULE
 
 
 func ConnectRows(lower: Array, upper: Array) -> void:

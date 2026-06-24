@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bkyrueo3rb3e0"]
+
+[ext_resource type="Script" uid="uid://d3h2dm1205w7g" path="res://Scripts/Battle_System/Card_Visual.gd" id="1_25bqn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67n6w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33s4q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvw6x"]
+
+[node name="Card_Visual" type="Node2D" unique_id=1004147954]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_25bqn")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1859199112]
+scale = Vector2(10, 10)
+polygon = PackedVector2Array(-16, 32, 16, 32, 20, 30, 22, 28, 24, 24, 24, -24, 22, -28, 20, -30, 16, -32, -16, -32, -20, -30, -22, -28, -24, -24, -24, 24, -22, 28, -20, 30)
+
+[node name="Control" type="Button" parent="." unique_id=1350125753]
+offset_left = -240.0
+offset_top = -320.0
+offset_right = 240.0
+offset_bottom = 320.0
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_67n6w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_33s4q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vvw6x")
+
+[node name="Cost_Lable" type="Label" parent="Control" unique_id=1891662255]
+layout_mode = 1
+offset_left = 45.0
+offset_top = 18.0
+offset_right = 73.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 96
+text = "a"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1970364088]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.497
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Desc_Lable" type="Label" parent="Control/MarginContainer" unique_id=2066177277]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 60
+text = "Sample Text"
+autowrap_mode = 3
+
+[connection signal="button_down" from="Control" to="." method="_on_control_button_down"]
+[connection signal="button_up" from="Control" to="." method="_on_control_button_up"]
