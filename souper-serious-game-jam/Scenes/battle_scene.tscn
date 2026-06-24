@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cnsmfwf7gnheo" path="res://Scripts/Battle_System/battle_scene.gd" id="1_hdvqd"]
 [ext_resource type="Script" uid="uid://b4g4leyx3ojc6" path="res://Scripts/Battle_System/Mouse_Detector.gd" id="2_anwxn"]
+[ext_resource type="PackedScene" uid="uid://ckfq8an488iu" path="res://Scenes/enemy_1.tscn" id="3_anwxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lw2f"]
 size = Vector2(330, 265)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn0dq"]
-size = Vector2(530, 339)
 
 [node name="Battle_Scene" type="Node2D" unique_id=904420090]
 script = ExtResource("1_hdvqd")
@@ -33,23 +31,8 @@ script = ExtResource("2_anwxn")
 position = Vector2(8, 9.5)
 shape = SubResource("RectangleShape2D_3lw2f")
 
-[node name="Enemy" type="Node2D" parent="." unique_id=71026432]
-position = Vector2(608, -29)
-
-[node name="Enemy_Placeholder" type="Polygon2D" parent="Enemy" unique_id=1797873252]
-color = Color(0.4698974, 0.18810302, 0.133113, 1)
-polygon = PackedVector2Array(-259, -9, -90, -51, -48, -120, 104, -110, 125, -21, 213, -8, 269, 39, 265, 75, 184, 92, 140, 36, 48, 76, 31, 141, 111, 177, 73, 205, -34, 162, -17, 102, -84, 110, -112, 166, -227, 141, -281, 104, -157, 64, -166, 20)
-
-[node name="Area2D" type="Area2D" parent="Enemy" unique_id=806813726]
-collision_layer = 2147483648
-collision_mask = 0
-script = ExtResource("2_anwxn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D" unique_id=207144055]
-position = Vector2(-8, 46.5)
-shape = SubResource("RectangleShape2D_gn0dq")
+[node name="Enemy1" parent="." unique_id=1849889732 instance=ExtResource("3_anwxn")]
+position = Vector2(559, -33)
 
 [connection signal="mouse_entered" from="Player/Area2D" to="Player/Area2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Player/Area2D" to="Player/Area2D" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Enemy/Area2D" to="Enemy/Area2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Enemy/Area2D" to="Enemy/Area2D" method="_on_mouse_exited"]

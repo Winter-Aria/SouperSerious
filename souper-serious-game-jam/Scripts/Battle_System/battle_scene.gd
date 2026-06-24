@@ -12,7 +12,7 @@ const CARD_VISUAL = preload("uid://bkyrueo3rb3e0")
 @onready var card_holder: Node2D = $Card_Holder
 
 @onready var Player_Moused: Mouse_Detector = $Player/Area2D
-@onready var Enemy_Moused: Mouse_Detector = $Enemy/Area2D
+@onready var Enemy_Moused: Mouse_Detector = $Enemy.mouse_detector
 
 var Card_Visuals : Array[Card_Visual] = []
 var Hand_Card_To_Visual_Card : Dictionary[Card, Card_Visual] = {}
