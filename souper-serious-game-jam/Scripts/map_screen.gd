@@ -6,9 +6,16 @@ var traveledConnections: Dictionary = {}
 var currentNodeId: String = "start"
 var playerMarker: Node2D
 
+var collectedCauses: Array[RuleCause] = []
+var collectedEffects: Array[RuleEffect] = []
+var activeRules: Array[ActiveRule] = []
+
 @export var MapButton: PackedScene
 @export var PlayerMarkerScene: PackedScene
 @export var WheelEncounterScene: PackedScene
+@export var GlobalRuleEncounterScene: PackedScene
+
+@export var MapDecorationTextures: Array[Texture2D]
 
 func _ready() -> void:
 	var generator = MapGenerator.new()
@@ -20,23 +27,16 @@ func _ready() -> void:
 	for node in mapNodes:
 		SpawnNodeButton(node)
 	
+	SpawnMapDecorations(mapNodes)
+	
 	RefreshAllButtons()
 	
 	playerMarker = PlayerMarkerScene.instantiate()
 	add_child(playerMarker)
 	
 	var startNode = FindNodeById("start")
-	var startNextRow = GetNextRowNodes(startNode)
 	$MapCamera.SetTarget(startNode)
 	MovePlayerMarkerTo(startNode)
-
-func GetNextRowNodes(node: MapNode) -> Array[MapNode]:
-	var nextRowNodes: Array[MapNode] = []
-	for connId in node.connections:
-		var target = FindNodeById(connId)
-		if target:
-			nextRowNodes.append(target)
-	return nextRowNodes
 
 func SpawnNodeButton(nodeData: MapNode) -> void:
 	var button = MapButton.instantiate()
@@ -44,6 +44,34 @@ func SpawnNodeButton(nodeData: MapNode) -> void:
 	button.Setup(nodeData)
 	button.NodeClicked.connect(OnNodeClicked)
 	nodeButtons[nodeData.id] = button
+
+func SpawnMapDecorations(nodes: Array[MapNode]):
+	var things_to_avoid = nodes.map(func(x): return x.screenPos)
+	for x in range(7):
+		for y in range(20):
+			var pos = Vector2(x-3, 5-y) * 150
+			pos += Vector2(randf(), randf()) * randf_range(1, 100)
+			if SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos)):
+				things_to_avoid.append(pos)
+			
+func DistToClosest(positions, target: Vector2):
+	var closest = INF
+	for pos in positions:
+		var distance_to_pos = target.distance_squared_to(pos)
+		if distance_to_pos < closest:
+			closest = distance_to_pos
+	return sqrt(closest)
+
+func SpawnMapDecoration(pos, distance) -> bool:
+	var texture = MapDecorationTextures.pick_random()
+	if randf_range(texture.get_size().length(), 200) > distance: # reduce chance to spawn close to nodes
+		return false
+		
+	var decoration = Sprite2D.new()
+	decoration.texture = texture
+	decoration.position = pos
+	$NodeContainer.add_child(decoration)
+	return true
 
 func MovePlayerMarkerTo(node: MapNode) -> void:
 	var nodeCenter = node.screenPos + Vector2(32, 32)
@@ -70,11 +98,13 @@ func OnNodeClicked(node: MapNode) -> void:
 	LockSiblingsInSameRow(node)
 	RefreshAllButtons()
 	$PathLines.SetTraveled(traveledConnections)
+	
 	$MapCamera.SetTarget(node)
 	MovePlayerMarkerTo(node)
+	
 	if node.type != MapNode.NodeType.START:
 		TriggerEncounter(node)
-		
+
 func TriggerEncounter(node: MapNode) -> void:
 	match node.type:
 		MapNode.NodeType.WHEEL:
@@ -84,9 +114,14 @@ func TriggerEncounter(node: MapNode) -> void:
 			wheelInstance.tree_exited.connect(OnEncounterClosed)
 			self.visible = false
 			set_process_input(false)
-		MapNode.NodeType.COMBAT:
-			pass
 		MapNode.NodeType.GLOBAL_RULE:
+			var ruleInstance = GlobalRuleEncounterScene.instantiate()
+			get_tree().root.add_child(ruleInstance)
+			ruleInstance.Setup(self)
+			ruleInstance.tree_exited.connect(OnEncounterClosed)
+			self.visible = false
+			set_process_input(false)
+		MapNode.NodeType.COMBAT:
 			pass
 		MapNode.NodeType.BOSS:
 			pass
@@ -94,6 +129,7 @@ func TriggerEncounter(node: MapNode) -> void:
 func OnEncounterClosed() -> void:
 	self.visible = true
 	set_process_input(true)
+	$MapCamera.make_current()
 
 func LockSiblingsInSameRow(chosenNode: MapNode) -> void:
 	for node in mapNodes:

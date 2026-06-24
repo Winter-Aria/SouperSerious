@@ -6,13 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://cnp5f5hgsntxr" path="res://Scenes/SpinThatWheel.tscn" id="3_w4cr0"]
 [ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://Scripts/path_lines.gd" id="4_vmmbu"]
 [ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://Scripts/map_camera.gd" id="5_pc8n1"]
-[ext_resource type="Texture2D" uid="uid://o03akv7r11k4" path="res://Art/MapBackground/MapBackground.png" id="6_w4cr0"]
+[ext_resource type="Texture2D" uid="uid://ch7yt2a3popev" path="res://Art/MapBackground/map.png" id="5_w4cr0"]
+[ext_resource type="PackedScene" uid="uid://dc212pest7jqu" path="res://Scenes/CauseEffectRule.tscn" id="5_w06ng"]
+[ext_resource type="Texture2D" uid="uid://b5tlo3uucn54g" path="res://Art/MapBackground/Scribbles/myki.png" id="7_enwxo"]
+[ext_resource type="Texture2D" uid="uid://dfeqlc7mcybv8" path="res://Art/MapBackground/Scribbles/plane.png" id="8_p6t3h"]
+[ext_resource type="Texture2D" uid="uid://u4ojh12krbm1" path="res://Art/MapBackground/Scribbles/call-me.png" id="9_w7vf1"]
+[ext_resource type="Texture2D" uid="uid://d32i07acf1ufs" path="res://Art/MapBackground/Scribbles/democrocy-manifest.png" id="10_fmany"]
+[ext_resource type="Texture2D" uid="uid://64f4obwattr8" path="res://Art/MapBackground/Scribbles/eat-the-ritch.png" id="11_tvra4"]
+[ext_resource type="Texture2D" uid="uid://brq6rpqjvbr1n" path="res://Art/MapBackground/Scribbles/literally-1984.png" id="12_2tl4v"]
+[ext_resource type="Texture2D" uid="uid://cu10v4plkn3gj" path="res://Art/MapBackground/Scribbles/pig-bro.png" id="13_sks68"]
+[ext_resource type="Texture2D" uid="uid://bg7bcmbmgs606" path="res://Art/MapBackground/Scribbles/incsoc.png" id="14_fmany"]
+[ext_resource type="Texture2D" uid="uid://qdp7p1wpgrr7" path="res://Art/MapBackground/Scribbles/aminal-farm.png" id="14_wihhg"]
 
 [node name="MapScreen" type="Node2D" unique_id=7276114]
 script = ExtResource("1_tkw7f")
 MapButton = ExtResource("2_wcttb")
 PlayerMarkerScene = ExtResource("3_1qph8")
 WheelEncounterScene = ExtResource("3_w4cr0")
+GlobalRuleEncounterScene = ExtResource("5_w06ng")
+MapDecorationTextures = Array[Texture2D]([ExtResource("14_wihhg"), ExtResource("12_2tl4v"), ExtResource("10_fmany"), ExtResource("11_tvra4"), ExtResource("13_sks68"), ExtResource("9_w7vf1"), ExtResource("8_p6t3h"), ExtResource("7_enwxo"), ExtResource("14_fmany")])
 
 [node name="PathLines" type="Node2D" parent="." unique_id=952606393]
 scale = Vector2(2.4393706, 2.441481)
@@ -27,6 +39,6 @@ script = ExtResource("5_pc8n1")
 [node name="Background" type="Sprite2D" parent="." unique_id=1641573354]
 z_index = -4
 texture_filter = 1
-position = Vector2(-7.9999695, -6504.0005)
+position = Vector2(-32.000004, -3192.0002)
 scale = Vector2(5.859863, 5.859863)
-texture = ExtResource("6_w4cr0")
+texture = ExtResource("5_w4cr0")
