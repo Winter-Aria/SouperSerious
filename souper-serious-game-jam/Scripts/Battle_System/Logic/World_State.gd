@@ -3,6 +3,10 @@ extends Resource
 
 var World_Player : Player = null
 
+var Enemies : Array[Enemy] = []
+
+
+
 func Damage_Enemy(_amount : int) -> void:
 	print("damaged enemy for " + str(_amount))
 

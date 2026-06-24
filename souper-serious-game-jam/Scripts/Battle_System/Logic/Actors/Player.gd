@@ -13,14 +13,6 @@ var Draw_Pile_Cards : Array[Card] = [
 
 var Hand : Array[Card] = []
 
-var Max_Health : int = 20
-var Health : int = Max_Health
-
-var Block : int = 0
-
-func Damage(_damage : int) -> void:
-	pass
-
 func Draw_Cards(_cards_to_draw : int) -> int:
 	var _cards_dawn : int = 0 
 	for i in range(_cards_dawn):

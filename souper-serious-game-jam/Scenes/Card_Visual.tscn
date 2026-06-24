@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkyrueo3rb3e0"]
 
-[ext_resource type="Script" uid="uid://d3h2dm1205w7g" path="res://Scripts/Battle_System/Card_Visual.gd" id="1_25bqn"]
+[ext_resource type="Script" uid="uid://d3h2dm1205w7g" path="res://Scripts/Battle_System/Visual-Interaction/Card_Visual.gd" id="1_25bqn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67n6w"]
 

@@ -104,6 +104,6 @@ func attempt_apply_card(_card : Card) -> bool:
 	return false
 
 func Remove_Card(_card : Card) -> void:
-	#Hand.erase(_card)
+	World.World_Player.Remove_Card(_card)
 	Card_Visuals.erase(Hand_Card_To_Visual_Card[_card])
 	Hand_Card_To_Visual_Card.erase(_card)
