@@ -9,6 +9,7 @@ const PLAYER = preload("uid://bt4pythk2hnh1")
 
 const CARD_VISUAL = preload("uid://bkyrueo3rb3e0")
 
+
 @onready var card_holder: Node2D = $Card_Holder
 
 @onready var enemy_1: enemy_visual = $Enemy1

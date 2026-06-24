@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyDeck" format=3 uid="uid://de3ybfbw1lhet"]
+
+[ext_resource type="Script" uid="uid://6wpcejba1e4h" path="res://Cards_And_Actions/Card.gd" id="1_dbuou"]
+[ext_resource type="Script" uid="uid://dyr87wuxklgcl" path="res://Cards_And_Actions/EnemyDeck.gd" id="2_28lpo"]
+[ext_resource type="Resource" uid="uid://hbkgi6sj1vkc" path="res://Cards_And_Actions/Cards/Red_Damager.tres" id="2_r075l"]
+[ext_resource type="Resource" uid="uid://don58r81pvpe5" path="res://Cards_And_Actions/Cards/Red_Healer.tres" id="3_i1cnn"]
+
+[resource]
+script = ExtResource("2_28lpo")
+cards = Array[ExtResource("1_dbuou")]([ExtResource("2_r075l"), ExtResource("3_i1cnn")])
+metadata/_custom_type_script = "uid://dyr87wuxklgcl"

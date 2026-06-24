@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://b3y7g8yld2h7e"]
-
-[ext_resource type="Script" uid="uid://6wpcejba1e4h" path="res://Cards_And_Actions/Card.gd" id="1_8d6nr"]
-[ext_resource type="Script" uid="uid://cabipixgaueu5" path="res://Scripts/Battle_System/Logic/Actors/Enemy.gd" id="1_pvs6q"]
-
-[resource]
-script = ExtResource("1_pvs6q")
-metadata/_custom_type_script = "uid://cabipixgaueu5"

@@ -3,7 +3,7 @@ extends Resource
 
 var World_Player : Player = null
 
-var Enemies : Array[Enemy] = []
+@export var Enemies : Array[Enemy] = []
 
 
 
