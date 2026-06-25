@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cwxnok0mi5ndo" path="res://Scripts/Battle_System/Logic/Status_Effects/RaisonDetat.tres" id="8_5b6w6"]
 [ext_resource type="Resource" uid="uid://dhii1sk2m4eyt" path="res://Scripts/Battle_System/Logic/Status_Effects/RevolutionarySituation.tres" id="9_825lm"]
 [ext_resource type="Resource" uid="uid://35lsfdq0tvvg" path="res://Scripts/Battle_System/Logic/Status_Effects/Rhetoric.tres" id="10_igril"]
+[ext_resource type="FontFile" uid="uid://b876rm4ohi1rt" path="res://Art/PeaberryBase.ttf" id="14_310d0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvt8d"]
 atlas = ExtResource("1_cvt8d")
@@ -165,6 +166,7 @@ scale = Vector2(1.3800323, 1.3800323)
 texture = ExtResource("4_1vvx0")
 
 [node name="RuleNameLabel" type="Label" parent="Sprite2D" unique_id=432341309]
+texture_filter = 1
 custom_maximum_size = Vector2(310, 63)
 offset_left = -73.1867
 offset_top = -65.21586
@@ -172,11 +174,13 @@ offset_right = 236.8133
 offset_bottom = -11.215858
 scale = Vector2(0.50919217, 0.51075727)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_310d0")
 theme_override_font_sizes/font_size = 18
 text = "I am testing to make sure "
 autowrap_mode = 2
 
 [node name="ResultLabel" type="Label" parent="Sprite2D" unique_id=1803645838]
+texture_filter = 1
 custom_maximum_size = Vector2(310, 63)
 offset_left = -74.63593
 offset_top = -27.53559
@@ -184,14 +188,17 @@ offset_right = 235.36407
 offset_bottom = 26.46441
 scale = Vector2(0.50919217, 0.51075727)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_310d0")
 theme_override_font_sizes/font_size = 11
 text = "I am testing to make sure the rule lable will wrap properly right now hopefully this is working but here is where the rule label will go. "
 autowrap_mode = 2
 
 [node name="ContinueButton" type="Button" parent="Sprite2D" unique_id=2111124538]
-offset_left = 29.70945
+texture_filter = 1
+offset_left = 15.941656
 offset_top = 36.95566
-offset_right = 111.70945
+offset_right = 153.72362
 offset_bottom = 67.95566
 scale = Vector2(0.5522143, 0.5522143)
+theme_override_fonts/font = ExtResource("14_310d0")
 text = "Sign Here"
