@@ -1,4 +1,5 @@
 extends StatusEffectEffect
+class_name ConvictionEffect
 
 func apply_effect_to_action(action_data: ActionData, effect_stacks: int) -> ActionData:
 	if action_data.action_type == action_data.DamageType.Damage:

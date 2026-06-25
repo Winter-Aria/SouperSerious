@@ -54,8 +54,24 @@ func add_effect(new_effect: StatusEffect, stacks_to_add: int, permanent: bool = 
 			i += 1
 
 
+func get_active_stacks_of_effect(effect: StatusEffect) -> int:
+	for active_effect in active_effects:
+		if active_effect.name == effect.name:
+			return active_effect.stacks
+	return 0
+
+
 func clear_active_effects() -> void:
 	active_effects.clear()
+
+# Clear any effects with the clear_on_turn_end variable set to true
+func clear_temporary_effects() -> void:
+	var i: int = 0
+	while i < active_effects.size():
+		if active_effects[i].effect.clear_on_turn_end:
+			active_effects.remove_at(i)
+		else:
+			i += 1
 
 
 func initialise_effects_for_battle() -> void:

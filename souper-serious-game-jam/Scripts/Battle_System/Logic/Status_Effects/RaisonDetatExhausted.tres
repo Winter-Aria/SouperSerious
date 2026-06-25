@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dm6vbu50nhkdw"]
+
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_v5gm0"]
+
+[resource]
+script = ExtResource("1_v5gm0")
+name = "Raison d'etat"
+description = "Raison d'etat has already triggered this turn and cannot reactivate until next turn."
+clear_on_turn_end = true
+metadata/_custom_type_script = "uid://bootffkdxrrqw"
