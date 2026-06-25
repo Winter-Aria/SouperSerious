@@ -136,6 +136,7 @@ func OnNodeClicked(node: MapNode) -> void:
 		TriggerEncounter(node)
 
 func TriggerEncounter(node: MapNode) -> void:
+	await SceneTransition.FadeOut()
 	match node.type:
 		MapNode.NodeType.WHEEL:
 			var wheelInstance = WheelEncounterScene.instantiate()
@@ -155,11 +156,14 @@ func TriggerEncounter(node: MapNode) -> void:
 			pass
 		MapNode.NodeType.BOSS:
 			pass
+	await SceneTransition.FadeIn()
 
 func OnEncounterClosed() -> void:
+	await SceneTransition.FadeOut()
 	self.visible = true
 	set_process_input(true)
 	$MapCamera.make_current()
+	await SceneTransition.FadeIn()
 
 func LockSiblingsInSameRow(chosenNode: MapNode) -> void:
 	for node in mapNodes:

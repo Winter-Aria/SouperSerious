@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameModifers="*uid://dk8wojhku8q3x"
+SceneTransition="*uid://rf28uygmmset"
 
 [display]
 
