@@ -3,7 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://caa1duor5ipr5" path="res://Art/SpinnerWheel/wheel_spinny.png" id="1_cvt8d"]
 [ext_resource type="Script" uid="uid://crjupgu66lt8a" path="res://Scripts/wheel_encouter.gd" id="1_kasfk"]
 [ext_resource type="Texture2D" uid="uid://ig54dq3gp8gv" path="res://Art/Courtroom.png" id="2_domyr"]
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="2_q514p"]
+[ext_resource type="Resource" uid="uid://ch4o6i5kf6iyf" path="res://Scripts/Battle_System/Logic/Status_Effects/ClassTraitor.tres" id="3_310d0"]
 [ext_resource type="Texture2D" uid="uid://ber132q8mfxuo" path="res://Art/NewRule Clipboard.png" id="4_1vvx0"]
+[ext_resource type="Resource" uid="uid://cav2ngx3flu75" path="res://Scripts/Battle_System/Logic/Status_Effects/CollateralDamage.tres" id="4_waoeh"]
+[ext_resource type="Resource" uid="uid://c0xlr3oucvcbn" path="res://Scripts/Battle_System/Logic/Status_Effects/Expropriation.tres" id="5_ljy3y"]
+[ext_resource type="Resource" uid="uid://bb3cwqjukgrax" path="res://Scripts/Battle_System/Logic/Status_Effects/HealFlip.tres" id="6_l8qaw"]
+[ext_resource type="Resource" uid="uid://dhmmfxrs4b21x" path="res://Scripts/Battle_System/Logic/Status_Effects/MonopolyOnViolence.tres" id="7_fhit1"]
+[ext_resource type="Resource" uid="uid://cwxnok0mi5ndo" path="res://Scripts/Battle_System/Logic/Status_Effects/RaisonDetat.tres" id="8_5b6w6"]
+[ext_resource type="Resource" uid="uid://dhii1sk2m4eyt" path="res://Scripts/Battle_System/Logic/Status_Effects/RevolutionarySituation.tres" id="9_825lm"]
+[ext_resource type="Resource" uid="uid://35lsfdq0tvvg" path="res://Scripts/Battle_System/Logic/Status_Effects/Rhetoric.tres" id="10_igril"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvt8d"]
 atlas = ExtResource("1_cvt8d")
@@ -125,6 +134,7 @@ resultLabel = NodePath("Sprite2D/ResultLabel")
 ruleNameLabel = NodePath("Sprite2D/RuleNameLabel")
 continueButton = NodePath("Sprite2D/ContinueButton")
 clipboardSprite = NodePath("Sprite2D")
+rules = Array[ExtResource("2_q514p")]([ExtResource("3_310d0"), ExtResource("4_waoeh"), ExtResource("5_ljy3y"), ExtResource("6_l8qaw"), ExtResource("7_fhit1"), ExtResource("8_5b6w6"), ExtResource("9_825lm"), ExtResource("10_igril")])
 
 [node name="Courtroom" type="Sprite2D" parent="." unique_id=1878177073]
 texture_filter = 1
@@ -162,8 +172,8 @@ offset_right = 236.8133
 offset_bottom = -11.215858
 scale = Vector2(0.50919217, 0.51075727)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 11
-text = "I am testing to make sure the rule lable will wrap properly right now hopefully this is working but here is where the rule label will go. "
+theme_override_font_sizes/font_size = 18
+text = "I am testing to make sure "
 autowrap_mode = 2
 
 [node name="ResultLabel" type="Label" parent="Sprite2D" unique_id=1803645838]

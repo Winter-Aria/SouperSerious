@@ -4,19 +4,20 @@ extends Node2D
 @export var ruleNameLabel: Label
 @export var continueButton: Button
 @export var clipboardSprite: Sprite2D
+@export var rules: Array[StatusEffect] = []
 @export var minSpinDuration: float = 1.5
 @export var maxSpinDuration: float = 3.0
 
-var chosenRule: WheelRule
-var allRules: Array[WheelRule]
+var chosenRule: StatusEffect
+var allRules: Array[StatusEffect]
 var isSpinning: bool = false
 var hasSpun: bool = false
 
-signal spinComplete(rule: WheelRule)
+signal spinComplete(rule: StatusEffect)
 
 func Setup() -> void:
 	$Camera2D.make_current()
-	allRules = WheelRuleList.GetAllRules()
+	allRules = rules
 	continueButton.visible = false
 	continueButton.pressed.connect(OnContinuePressed)
 	clipboardSprite.visible = false
@@ -51,7 +52,6 @@ func StartSpin() -> void:
 	OnSpinComplete()
 
 func OnSpinComplete() -> void:
-	chosenRule.Apply()
 	spinComplete.emit(chosenRule)
 	ShowClipboard()
 
@@ -66,7 +66,7 @@ func ShowClipboard() -> void:
 	var tween = create_tween()
 	tween.tween_property(clipboardSprite, "position:y", targetY, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
-	ruleNameLabel.text = chosenRule.displayName
+	ruleNameLabel.text = chosenRule.name
 	resultLabel.text = chosenRule.description
 	continueButton.visible = true
 
