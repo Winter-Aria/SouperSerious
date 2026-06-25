@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://caa1duor5ipr5" path="res://Art/SpinnerWheel/wheel_spinny.png" id="1_cvt8d"]
 [ext_resource type="Script" uid="uid://crjupgu66lt8a" path="res://Scripts/wheel_encouter.gd" id="1_kasfk"]
 [ext_resource type="Texture2D" uid="uid://ig54dq3gp8gv" path="res://Art/Courtroom.png" id="2_domyr"]
+[ext_resource type="Texture2D" uid="uid://ber132q8mfxuo" path="res://Art/NewRule Clipboard.png" id="4_1vvx0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvt8d"]
 atlas = ExtResource("1_cvt8d")
@@ -115,10 +116,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="WheelEncounter" type="Node2D" unique_id=2145090882 node_paths=PackedStringArray("resultLabel", "continueButton")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yoqy"]
+size = Vector2(113, 162)
+
+[node name="WheelEncounter" type="Node2D" unique_id=2145090882 node_paths=PackedStringArray("resultLabel", "ruleNameLabel", "continueButton", "clipboardSprite")]
 script = ExtResource("1_kasfk")
-resultLabel = NodePath("Results Label")
-continueButton = NodePath("Button")
+resultLabel = NodePath("Sprite2D/ResultLabel")
+ruleNameLabel = NodePath("Sprite2D/RuleNameLabel")
+continueButton = NodePath("Sprite2D/ContinueButton")
+clipboardSprite = NodePath("Sprite2D")
 
 [node name="Courtroom" type="Sprite2D" parent="." unique_id=1878177073]
 texture_filter = 1
@@ -126,7 +132,8 @@ position = Vector2(-5, 41)
 texture = ExtResource("2_domyr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1834289357]
-zoom = Vector2(2.745, 2.745)
+position = Vector2(-4, 38)
+zoom = Vector2(2.44, 2.44)
 
 [node name="WheelSprite" type="AnimatedSprite2D" parent="." unique_id=1285045770]
 texture_filter = 1
@@ -135,16 +142,46 @@ scale = Vector2(3.8258877, 3.8258877)
 sprite_frames = SubResource("SpriteFrames_0yoqy")
 animation = &"spin"
 
-[node name="Results Label" type="Label" parent="." unique_id=432341309]
-offset_left = -210.0
-offset_top = -127.0
-offset_right = 226.0
-offset_bottom = -104.0
-horizontal_alignment = 1
+[node name="Area2D" type="Area2D" parent="." unique_id=472649084]
 
-[node name="Button" type="Button" parent="." unique_id=2111124538]
-offset_left = -40.0
-offset_top = 120.0
-offset_right = 40.0
-offset_bottom = 151.0
-text = "Continue"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1985351024]
+position = Vector2(-2.5, 4)
+shape = SubResource("RectangleShape2D_0yoqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2043683709]
+texture_filter = 1
+position = Vector2(0, 525)
+scale = Vector2(1.3800323, 1.3800323)
+texture = ExtResource("4_1vvx0")
+
+[node name="RuleNameLabel" type="Label" parent="Sprite2D" unique_id=432341309]
+custom_maximum_size = Vector2(310, 63)
+offset_left = -73.1867
+offset_top = -65.21586
+offset_right = 236.8133
+offset_bottom = -11.215858
+scale = Vector2(0.50919217, 0.51075727)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "I am testing to make sure the rule lable will wrap properly right now hopefully this is working but here is where the rule label will go. "
+autowrap_mode = 2
+
+[node name="ResultLabel" type="Label" parent="Sprite2D" unique_id=1803645838]
+custom_maximum_size = Vector2(310, 63)
+offset_left = -74.63593
+offset_top = -27.53559
+offset_right = 235.36407
+offset_bottom = 26.46441
+scale = Vector2(0.50919217, 0.51075727)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "I am testing to make sure the rule lable will wrap properly right now hopefully this is working but here is where the rule label will go. "
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Sprite2D" unique_id=2111124538]
+offset_left = 29.70945
+offset_top = 36.95566
+offset_right = 111.70945
+offset_bottom = 67.95566
+scale = Vector2(0.5522143, 0.5522143)
+text = "Sign Here"
