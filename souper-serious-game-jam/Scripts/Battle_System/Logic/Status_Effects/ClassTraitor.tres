@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://ch4o6i5kf6iyf"]
+
+[ext_resource type="Script" uid="uid://ojidmy5uka8t" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/ClassTraitorEffect.gd" id="1_a6hpd"]
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_m7b84"]
+
+[sub_resource type="Resource" id="Resource_a6hpd"]
+script = ExtResource("1_a6hpd")
+metadata/_custom_type_script = "uid://ojidmy5uka8t"
+
+[resource]
+script = ExtResource("1_m7b84")
+name = "Class Traitor"
+description = "Dealing damage to yourself grants energy equal to half the damage received (rounded down)."
+trigger_condition = 4
+effect = SubResource("Resource_a6hpd")
+priority = 30
+metadata/_custom_type_script = "uid://bootffkdxrrqw"

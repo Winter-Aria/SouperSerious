@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://35lsfdq0tvvg"]
+
+[ext_resource type="Resource" uid="uid://dd2ymkbjvgawr" path="res://Scripts/Battle_System/Logic/Status_Effects/Conviction.tres" id="1_87rnm"]
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_hu0iy"]
+[ext_resource type="Script" uid="uid://bt718027w2f5g" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/RhetoricEffect.gd" id="1_tv8se"]
+
+[sub_resource type="Resource" id="Resource_tv8se"]
+script = ExtResource("1_tv8se")
+ConvictionStatusEffect = ExtResource("1_87rnm")
+metadata/_custom_type_script = "uid://bt718027w2f5g"
+
+[resource]
+script = ExtResource("1_hu0iy")
+name = "Rhetoric"
+description = "Upon dealing damage, there is a 60% chance to reduce the Conviction of a random ally of the target (including the target itself) by 1."
+trigger_condition = 4
+effect = SubResource("Resource_tv8se")
+priority = 20
+metadata/_custom_type_script = "uid://bootffkdxrrqw"

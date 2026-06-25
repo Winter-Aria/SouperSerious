@@ -8,10 +8,7 @@ enum Card_Choosing_Behaviour_Type
 }
 
 @export var deck: EnemyDeck
-
 @export var Card_Choosing_Behaviour : Card_Choosing_Behaviour_Type
-
-@export var Enemy_Health : int = 20
 
 var Card_To_Play : Card
 
@@ -19,12 +16,8 @@ var Card_To_Play : Card
 var current_hand: Array[Card]
 var chosen_card_index: int = 0
 
-func _init() -> void:
-	Max_Health = Enemy_Health
-	Health = Enemy_Health
-
 func End_Of_Turn_Reset() -> void:
-	super.End_Of_Turn_Reset()
+	super.End_Of_Turn()
 	
 	choose_next_card()
 

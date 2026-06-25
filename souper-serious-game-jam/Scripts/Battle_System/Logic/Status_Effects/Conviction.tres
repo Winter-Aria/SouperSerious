@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dd2ymkbjvgawr"]
+
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_g3ips"]
+[ext_resource type="Script" uid="uid://ceocsnn0w7sc1" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/ConvictionEffect.gd" id="1_uipwb"]
+
+[sub_resource type="Resource" id="Resource_0a874"]
+script = ExtResource("1_uipwb")
+metadata/_custom_type_script = "uid://ceocsnn0w7sc1"
+
+[resource]
+script = ExtResource("1_g3ips")
+name = "Conviction"
+description = "Increases damage dealt by attacks by 1 per stack of Conviction."
+trigger_condition = 1
+effect = SubResource("Resource_0a874")
+metadata/_custom_type_script = "uid://bootffkdxrrqw"
