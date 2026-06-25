@@ -1,10 +1,17 @@
 [gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dhii1sk2m4eyt"]
 
 [ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_y566j"]
+[ext_resource type="Script" uid="uid://bfab5r5rxtlf4" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/RevolutionarySituationEffect.gd" id="1_yr4cp"]
+
+[sub_resource type="Resource" id="Resource_y566j"]
+script = ExtResource("1_yr4cp")
+metadata/_custom_type_script = "uid://bfab5r5rxtlf4"
 
 [resource]
 script = ExtResource("1_y566j")
 name = "Revolutionary Situation"
 description = "Deal +100% damage while below 30% HP."
+trigger_condition = 1
+effect = SubResource("Resource_y566j")
 priority = 100
 metadata/_custom_type_script = "uid://bootffkdxrrqw"

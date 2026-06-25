@@ -23,3 +23,12 @@ enum TriggerCondition{
 
 # Lower number means it will proc earlier when multiple effects need to proc
 @export var priority: int
+
+func proc_effect_on_action(action_data: ActionData, stacks: int) -> ActionData:
+	if self in action_data.procced_status_effects: # Cancel proc if it has already occurred in this proc chain
+		return action_data
+	
+	action_data.procced_status_effects.append(self)
+	if effect != null:
+		action_data = effect.apply_effect_to_action(action_data, stacks)
+	return action_data

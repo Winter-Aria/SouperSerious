@@ -13,5 +13,5 @@ name = "Discursive Delegitimisation"
 description = "All cards that would deal damage now heal their target, and all cards that would heal their target now deal damage."
 trigger_condition = 3
 effect = SubResource("Resource_0a874")
-priority = -100
+priority = -10
 metadata/_custom_type_script = "uid://bootffkdxrrqw"

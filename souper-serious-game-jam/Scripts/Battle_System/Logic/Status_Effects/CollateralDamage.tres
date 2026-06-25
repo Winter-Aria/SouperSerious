@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://cav2ngx3flu75"]
+
+[ext_resource type="Script" uid="uid://fo2uf6h4stbw" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/CollateralDamageEffect.gd" id="1_fhu28"]
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_ogedj"]
+
+[sub_resource type="Resource" id="Resource_anwxn"]
+script = ExtResource("1_fhu28")
+metadata/_custom_type_script = "uid://fo2uf6h4stbw"
+
+[resource]
+script = ExtResource("1_ogedj")
+name = "Collateral Damage"
+description = "Every card you play also applies 50% of its effect to ALL other characters present in battle."
+trigger_condition = 3
+effect = SubResource("Resource_anwxn")
+priority = -20
+metadata/_custom_type_script = "uid://bootffkdxrrqw"
