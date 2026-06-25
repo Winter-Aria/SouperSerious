@@ -15,6 +15,7 @@ enum TriggerCondition{
 
 @export var name: String
 @export_multiline var description: String
+@export var icon: Image
 @export var trigger_condition: TriggerCondition
 @export var clear_on_turn_end: bool = false
 

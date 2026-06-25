@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dhii1sk2m4eyt"]
+
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_y566j"]
+
+[resource]
+script = ExtResource("1_y566j")
+name = "Revolutionary Situation"
+description = "Deal +100% damage while below 30% HP."
+priority = 100
+metadata/_custom_type_script = "uid://bootffkdxrrqw"
