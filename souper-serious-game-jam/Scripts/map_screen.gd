@@ -96,7 +96,7 @@ func SpawnMapDecoration(pos, distance):
 	if distance < texSize * 1.4:
 		return
 	
-	var decoration = Sprite2D.new()
+	var decoration = Sprite2D.new()	
 	decoration.texture = texture
 	decoration.position = pos
 	decoration.rotation_degrees = randf_range(-10, 10)
