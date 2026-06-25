@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://caa1duor5ipr5" path="res://Art/SpinnerWheel/wheel_spinny.png" id="1_cvt8d"]
 [ext_resource type="Script" uid="uid://crjupgu66lt8a" path="res://Scripts/wheel_encouter.gd" id="1_kasfk"]
+[ext_resource type="Texture2D" uid="uid://ig54dq3gp8gv" path="res://Art/Courtroom.png" id="2_domyr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvt8d"]
 atlas = ExtResource("1_cvt8d")
@@ -119,23 +120,31 @@ script = ExtResource("1_kasfk")
 resultLabel = NodePath("Results Label")
 continueButton = NodePath("Button")
 
+[node name="Courtroom" type="Sprite2D" parent="." unique_id=1878177073]
+texture_filter = 1
+position = Vector2(-5, 41)
+texture = ExtResource("2_domyr")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1834289357]
-zoom = Vector2(4.305, 4.305)
+zoom = Vector2(2.745, 2.745)
 
 [node name="WheelSprite" type="AnimatedSprite2D" parent="." unique_id=1285045770]
 texture_filter = 1
+position = Vector2(-3, 11)
+scale = Vector2(3.8258877, 3.8258877)
 sprite_frames = SubResource("SpriteFrames_0yoqy")
 animation = &"spin"
 
 [node name="Results Label" type="Label" parent="." unique_id=432341309]
-offset_left = -64.0
-offset_top = -80.0
-offset_right = -24.0
-offset_bottom = -57.0
+offset_left = -210.0
+offset_top = -127.0
+offset_right = 226.0
+offset_bottom = -104.0
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=2111124538]
 offset_left = -40.0
-offset_top = 24.0
+offset_top = 120.0
 offset_right = 40.0
-offset_bottom = 55.0
+offset_bottom = 151.0
 text = "Continue"
