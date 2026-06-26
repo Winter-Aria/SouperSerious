@@ -26,6 +26,12 @@ func Get_Enemies() -> Array[Enemy]:
 	
 	return Enemies
 
+func Get_Actors_On_Team(check_team: Base_Actor.ActorTeam) -> Array[Base_Actor]:
+	var actors_to_return: Array[Base_Actor] = []
+	for actor in Actors:
+		if actor.Team == check_team:
+			actors_to_return.append(actor)
+	return actors_to_return
 
 func Damage_Enemy(_amount : int) -> void:
 	print("damaged enemy for " + str(_amount))
