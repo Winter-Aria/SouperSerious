@@ -17,7 +17,7 @@ const ENEMY_SPACING : float = 150
 
 @export var Card_Positioning_Node : Node2D
 
-var Current_World_State : World_State = null
+static var Current_World_State : World_State = null
 
 var Card_Visuals : Array[Card_Visual] = []
 var Hand_Card_To_Visual_Card : Dictionary[Card, Card_Visual] = {}
@@ -128,12 +128,10 @@ func On_Card_Visual_Picked_Up(_card : Card_Visual) -> void:
 
 func On_Card_Visual_Picked_Dropped(_card : Card_Visual) -> void:
 	var _card_hand : Card = Hand_Card_To_Visual_Card.find_key(_card)
-	print("A")
-	print(_card)
-	print(_card_hand)
-	print(Hand_Card_To_Visual_Card)
-	if attempt_apply_card(_card_hand):
-		_card_hand.Take_Cards_Action(Current_World_State)
+	
+	var Attempted_ActionData : ActionData = Attempt_Get_Action(_card_hand)
+	if Attempted_ActionData != null:
+		Current_World_State.Apply_Action(Attempted_ActionData)
 		
 		Remove_Card(_card_hand)
 	
@@ -142,21 +140,38 @@ func On_Card_Visual_Picked_Dropped(_card : Card_Visual) -> void:
 const Player_Flags : int = Card.Casting_Type.Self
 const Enemy_Flags : int = Card.Casting_Type.Hostiles
 
-func attempt_apply_card(_card : Card) -> bool:
+func Attempt_Get_Action(_card : Card) -> ActionData:
+	var Actor_Action_Applies_To : Base_Actor = attempt_apply_card(_card)
+	if Actor_Action_Applies_To == null:
+		return null
+	
+	var Data : ActionData = _card.Get_Action_Data()
+	Data.target = Actor_Action_Applies_To
+	Data.caster = Current_World_State.World_Player
+	
+	return Data
+
+func attempt_apply_card(_card : Card) -> Base_Actor:
 	for _actor : Actor_Visual in Scene_Actors:
 		if _actor.mouse_detector.Mouse_Within:
 			var Actor_Equivilent : Base_Actor = Actor_Visual_To_Actor[_actor]
 			if Actor_Equivilent is Player:
-				return _card.Applicable_To_Target(Player_Flags)
+				if _card.Applicable_To_Target(Player_Flags):
+					return Actor_Equivilent
 			elif Actor_Equivilent is Enemy:
-				return _card.Applicable_To_Target(Enemy_Flags)
+				if _card.Applicable_To_Target(Enemy_Flags):
+					return Actor_Equivilent
 			else:
 				assert(false, "what")
 	
-	return false
-
+	return null
 
 func Remove_Card(_card : Card) -> void:
 	Current_World_State.World_Player.Remove_Card(_card)
-	Card_Visuals.erase(Hand_Card_To_Visual_Card[_card])
+	var Visual = Hand_Card_To_Visual_Card[_card]
+	Card_Visuals.erase(Visual)
 	Hand_Card_To_Visual_Card.erase(_card)
+	Visual.queue_free()
+
+func _on_end_turn_button_pressed() -> void:
+	pass # Replace with function body.

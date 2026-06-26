@@ -13,8 +13,6 @@ func _init() -> void:
 	Draw_Pile = Held_Deck.Get_Deck()
 
 func Draw_Cards(_cards_to_draw : int) -> int:
-	print(Draw_Pile)
-	
 	var _cards_dawn : int = 0 
 	for i in range(_cards_to_draw):
 		if Draw_Pile.is_empty():

@@ -14,3 +14,34 @@ position = Vector2(1670, 540)
 
 [node name="Card_Positioning_Node" type="Node2D" parent="." unique_id=1404884408]
 position = Vector2(960, 880)
+
+[node name="Control" type="Control" parent="." unique_id=2137181811]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="End_Turn_Button" type="Button" parent="Control" unique_id=1630695026]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1674.0
+offset_top = 938.0
+offset_right = 1872.0
+offset_bottom = 1034.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+text = "END TURN"
+
+[connection signal="pressed" from="Control/End_Turn_Button" to="." method="_on_end_turn_button_pressed"]
