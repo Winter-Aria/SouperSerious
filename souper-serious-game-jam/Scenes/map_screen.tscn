@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bg3utsm30q026" path="res://Scripts/path_lines.gd" id="4_vmmbu"]
 [ext_resource type="Script" uid="uid://boic3mrdov2g4" path="res://Scripts/map_camera.gd" id="5_pc8n1"]
 [ext_resource type="PackedScene" uid="uid://dc212pest7jqu" path="res://Scenes/CauseEffectRule.tscn" id="5_w06ng"]
+[ext_resource type="Script" uid="uid://bnwibcpoqe45n" path="res://Scripts/map_decoration.gd" id="6_33frp"]
 [ext_resource type="Texture2D" uid="uid://b5tlo3uucn54g" path="res://Art/MapBackground/Scribbles/myki.png" id="7_enwxo"]
 [ext_resource type="Texture2D" uid="uid://dfeqlc7mcybv8" path="res://Art/MapBackground/Scribbles/plane.png" id="8_p6t3h"]
 [ext_resource type="Texture2D" uid="uid://u4ojh12krbm1" path="res://Art/MapBackground/Scribbles/call-me.png" id="9_w7vf1"]
@@ -17,6 +18,60 @@
 [ext_resource type="Texture2D" uid="uid://bg7bcmbmgs606" path="res://Art/MapBackground/Scribbles/incsoc.png" id="14_fmany"]
 [ext_resource type="Texture2D" uid="uid://qdp7p1wpgrr7" path="res://Art/MapBackground/Scribbles/aminal-farm.png" id="14_wihhg"]
 
+[sub_resource type="Resource" id="Resource_rmxc4"]
+script = ExtResource("6_33frp")
+image = ExtResource("14_fmany")
+weight = 5
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_w06ng"]
+script = ExtResource("6_33frp")
+image = ExtResource("7_enwxo")
+weight = 5
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_ejrkr"]
+script = ExtResource("6_33frp")
+image = ExtResource("8_p6t3h")
+weight = 1
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_33frp"]
+script = ExtResource("6_33frp")
+image = ExtResource("9_w7vf1")
+weight = 1
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_p6q6i"]
+script = ExtResource("6_33frp")
+image = ExtResource("13_sks68")
+weight = 2
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_8b3e5"]
+script = ExtResource("6_33frp")
+image = ExtResource("11_tvra4")
+weight = 1
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_enwxo"]
+script = ExtResource("6_33frp")
+image = ExtResource("10_fmany")
+weight = 1
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_p6t3h"]
+script = ExtResource("6_33frp")
+image = ExtResource("12_2tl4v")
+weight = 2
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
+[sub_resource type="Resource" id="Resource_w7vf1"]
+script = ExtResource("6_33frp")
+image = ExtResource("14_wihhg")
+weight = 1
+metadata/_custom_type_script = "uid://bnwibcpoqe45n"
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w7vf1"]
 load_path = "res://.godot/imported/map.png-75c779b971b696332fa150f9f203b841.ctex"
 
@@ -26,7 +81,7 @@ MapButton = ExtResource("2_wcttb")
 PlayerMarkerScene = ExtResource("3_1qph8")
 WheelEncounterScene = ExtResource("3_w4cr0")
 GlobalRuleEncounterScene = ExtResource("5_w06ng")
-MapDecorationTextures = Array[Texture2D]([ExtResource("14_wihhg"), ExtResource("12_2tl4v"), ExtResource("10_fmany"), ExtResource("11_tvra4"), ExtResource("13_sks68"), ExtResource("9_w7vf1"), ExtResource("8_p6t3h"), ExtResource("7_enwxo"), ExtResource("14_fmany")])
+MapDecorations = Array[ExtResource("6_33frp")]([SubResource("Resource_rmxc4"), SubResource("Resource_w06ng"), SubResource("Resource_ejrkr"), SubResource("Resource_33frp"), SubResource("Resource_p6q6i"), SubResource("Resource_8b3e5"), SubResource("Resource_enwxo"), SubResource("Resource_p6t3h"), SubResource("Resource_w7vf1")])
 
 [node name="PathLines" type="Node2D" parent="." unique_id=952606393]
 scale = Vector2(2.4393706, 2.441481)

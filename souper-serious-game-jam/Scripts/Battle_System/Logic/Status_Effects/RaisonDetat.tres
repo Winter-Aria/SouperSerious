@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://cwxnok0mi5ndo"]
+
+[ext_resource type="Script" uid="uid://sbo88kv6o0h1" path="res://Scripts/Battle_System/Logic/Status_Effects/Status_Effect_Effects/RaisonDetatEffect.gd" id="1_6ihbe"]
+[ext_resource type="Resource" uid="uid://dd2ymkbjvgawr" path="res://Scripts/Battle_System/Logic/Status_Effects/Conviction.tres" id="1_hvstr"]
+[ext_resource type="Script" uid="uid://bootffkdxrrqw" path="res://Scripts/Battle_System/Logic/StatusEffect.gd" id="1_rk3cq"]
+[ext_resource type="Resource" uid="uid://dm6vbu50nhkdw" path="res://Scripts/Battle_System/Logic/Status_Effects/RaisonDetatExhausted.tres" id="2_7ik55"]
+
+[sub_resource type="Resource" id="Resource_6ihbe"]
+script = ExtResource("1_6ihbe")
+ConvictionStatusEffect = ExtResource("1_hvstr")
+RaisonDetatExhaustedStatusEffect = ExtResource("2_7ik55")
+metadata/_custom_type_script = "uid://sbo88kv6o0h1"
+
+[resource]
+script = ExtResource("1_rk3cq")
+name = "Raison d'etat"
+description = "Dealing damage to an enemy grants them +1 Conviction for the rest of the battle (max one stack per turn per stack of Raison d'etat)."
+trigger_condition = 4
+effect = SubResource("Resource_6ihbe")
+priority = 10
+metadata/_custom_type_script = "uid://bootffkdxrrqw"

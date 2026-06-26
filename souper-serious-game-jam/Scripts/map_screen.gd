@@ -15,7 +15,7 @@ var activeRules: Array[ActiveRule] = []
 @export var WheelEncounterScene: PackedScene
 @export var GlobalRuleEncounterScene: PackedScene
 
-@export var MapDecorationTextures: Array[Texture2D]
+@export var MapDecorations: Array[mapDecoration]
 
 func _ready() -> void:
 	var generator = MapGenerator.new()
@@ -32,7 +32,7 @@ func _ready() -> void:
 	RefreshAllButtons()
 	
 	playerMarker = PlayerMarkerScene.instantiate()
-	add_child(playerMarker)
+	$NodeContainer.add_child(playerMarker)
 	
 	var startNode = FindNodeById("start")
 	$MapCamera.SetTarget(startNode)
@@ -45,40 +45,67 @@ func SpawnNodeButton(nodeData: MapNode) -> void:
 	button.NodeClicked.connect(OnNodeClicked)
 	nodeButtons[nodeData.id] = button
 
-func SpawnMapDecorations(nodes: Array[MapNode]):
-	var things_to_avoid = nodes.map(func(x): return x.screenPos)
-	const BUFFER_SPACE = 400
-	var bg_size = $Background.texture.get_size() * $Background.scale * 0.8
-	var bg_pos = $Background.position
-	for y in range(100):
-		var pos = Vector2(randf_range(0, bg_size.x), randf_range(0, bg_size.y)) - bg_size / 2 + bg_pos
-		pos /= $NodeContainer.scale
-		if SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos)):
-			things_to_avoid.append(pos)
-			
-func DistToClosest(positions, target: Vector2):
-	var closest = INF
-	for pos in positions:
-		var distance_to_pos = target.distance_squared_to(pos)
-		if distance_to_pos < closest:
-			closest = distance_to_pos
-	return sqrt(closest)
+class avoidable_map_obj:
+	var position: Vector2
+	var size: float
+	func _init(position_, size_) -> void:
+		position = position_
+		size = size_
 
-func SpawnMapDecoration(pos, distance) -> bool:
-	var texture = MapDecorationTextures.pick_random()
-	if texture.get_size().length() * 1.3 > distance: # reduce chance to spawn close to nodes
-		return false
+func SpawnMapDecorations(nodes: Array[MapNode]):
+	# convert MapNodes into format with .position attribute
+	var things_to_avoid = nodes.map(func(x):
+		return avoidable_map_obj.new(
+			x.screenPos + Vector2(75, 75),
+			200
+		)
+	)
 	
-	var decoration = Sprite2D.new()
+	for y in range(1000):
+		# generate random position within background
+		var bg_size = $Background.texture.get_size() * $Background.scale * 0.8
+		var bg_pos = $Background.position
+		var pos = Vector2(randf_range(0, bg_size.x), randf_range(0, bg_size.y)) - bg_size / 2 + bg_pos
+		pos = pos / $NodeContainer.scale # scale to counter nodecontainer scale
+		
+		# attempt to spawn a decoration and add it to the list of objects to avoid
+		# if the spawn succeeds
+		var decoration = SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos))
+		if decoration:
+			var size = decoration.texture.get_size().length() / 2
+			things_to_avoid.append(avoidable_map_obj.new(decoration.position, size))
+
+# calcualate the distance to the closest position in a list
+# of objects to a target point
+func DistToClosest(things_to_avoid, target: Vector2):
+	var closest = INF
+	for thing in things_to_avoid:
+		var distance_to_pos = target.distance_squared_to(thing.position)
+		if distance_to_pos - thing.size ** 2 < closest:
+			closest = distance_to_pos - thing.size ** 2
+	return sqrt(max(0, closest))
+
+func SpawnMapDecoration(pos, distance):
+	# pick a random (weighted) texture
+	var MapDecorationTextures = MapDecorations.map(func(x): return x.image)
+	var MapDecorationWeights = MapDecorations.map(func(x): return x.weight)
+	var rng = RandomNumberGenerator.new()
+	var texture = MapDecorationTextures[rng.rand_weighted(MapDecorationWeights)]
+	
+	var texSize = texture.get_size().length() / 2
+	if distance < texSize * 1.4:
+		return
+	
+	var decoration = Sprite2D.new()	
 	decoration.texture = texture
 	decoration.position = pos
 	decoration.rotation_degrees = randf_range(-10, 10)
+	decoration.editor_description = "distance: %s\nsize: %s" % [str(distance), str(texSize)]
 	$NodeContainer.add_child(decoration)
-	return true
+	return decoration
 
 func MovePlayerMarkerTo(node: MapNode) -> void:
-	var nodeCenter = node.screenPos + Vector2(32, 32)
-	playerMarker.position = nodeCenter
+	playerMarker.position = node.screenPos + Vector2(32, 32)
 
 func OnNodeClicked(node: MapNode) -> void:
 	if not node.available:
@@ -109,6 +136,7 @@ func OnNodeClicked(node: MapNode) -> void:
 		TriggerEncounter(node)
 
 func TriggerEncounter(node: MapNode) -> void:
+	await SceneTransition.FadeOut()
 	match node.type:
 		MapNode.NodeType.WHEEL:
 			var wheelInstance = WheelEncounterScene.instantiate()
@@ -128,11 +156,14 @@ func TriggerEncounter(node: MapNode) -> void:
 			pass
 		MapNode.NodeType.BOSS:
 			pass
+	await SceneTransition.FadeIn()
 
 func OnEncounterClosed() -> void:
+	await SceneTransition.FadeOut()
 	self.visible = true
 	set_process_input(true)
 	$MapCamera.make_current()
+	await SceneTransition.FadeIn()
 
 func LockSiblingsInSameRow(chosenNode: MapNode) -> void:
 	for node in mapNodes:

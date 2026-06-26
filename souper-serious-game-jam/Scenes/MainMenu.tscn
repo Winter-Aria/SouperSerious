@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d3gid1c3q0suh"]
+
+[ext_resource type="Script" uid="uid://dd7a612phhvib" path="res://Scenes/main_menu.gd" id="1_tt5f1"]
+[ext_resource type="PackedScene" uid="uid://d36sk75ua45gs" path="res://Scenes/map_screen.tscn" id="2_853f1"]
+
+[node name="MainMenu" type="Control" unique_id=805768484]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tt5f1")
+GameScene = ExtResource("2_853f1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1632654592]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.0024072, 1.0000005)
+
+[node name="Game Title" type="Label" parent="VBoxContainer" unique_id=1187214073]
+layout_mode = 2
+text = "Revolution game"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=927656501]
+layout_mode = 2
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=850174884]
+layout_mode = 2
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1169351151]
+layout_mode = 2
+text = "Credits"
