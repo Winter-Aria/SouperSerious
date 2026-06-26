@@ -19,6 +19,29 @@ func Take_Damage(_damage : int) -> void:
 	Health -= damage_to_deal
 	Health = clampi(Health, 0, 10000)
 
+func Apply_Action_To_Actor(action_data: ActionData) -> ActionData:
+	if action_data.action_type == action_data.DamageType.Damage:
+		var damage_to_deal: int = clampi(action_data.action_value - Block, 0, action_data.action_value + abs(Block)) # Accounting for making sure you dont heal by dealing less damage than they have block
+		Health -= damage_to_deal
+		var health_after_damage_dealt = Health
+		Health = clampi(Health, 0, Max_Health)
+		var total_damage_dealt = damage_to_deal - (Health - health_after_damage_dealt)
+		var damaging_action_data = action_data.duplicate()
+		damaging_action_data.action_value = total_damage_dealt
+		return damaging_action_data
+	elif action_data.action_type == action_data.DamageType.Heal:
+		Health += action_data.action_value
+		var health_after_heal = Health
+		Health = clampi(Health, 0, Max_Health)
+		var total_heal_done = action_data.action_value - (health_after_heal - Health)
+		var healing_action_data = action_data.duplicate()
+		healing_action_data.action_value = total_heal_done
+		return healing_action_data
+	else:
+		print("How did you reach this branch?")
+		action_data.action_value = 0
+		return action_data
+
 func Apply_Effect(effect: StatusEffect, stacks: int, permanent: bool = false, immediate: bool = true) -> void:
 	status_manager.add_effect(effect, stacks, permanent, immediate)
 
