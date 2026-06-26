@@ -5,7 +5,8 @@ class_name RaisonDetatEffect
 @export var RaisonDetatExhaustedStatusEffect: StatusEffect
 
 func apply_effect_to_action(action_data: ActionData, effect_stacks: int) -> ActionData:
-	if action_data.target.Get_Effect_Stacks(RaisonDetatExhaustedStatusEffect) > 0:
+	if (action_data.target.Get_Effect_Stacks(RaisonDetatExhaustedStatusEffect) > 0 
+	or action_data.action_type != action_data.DamageType.Damage):
 		return
 	else:
 		action_data.target.Apply_Effect(ConvictionStatusEffect, effect_stacks)

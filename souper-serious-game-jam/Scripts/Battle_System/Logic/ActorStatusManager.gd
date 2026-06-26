@@ -73,6 +73,25 @@ func clear_temporary_effects() -> void:
 		else:
 			i += 1
 
+func sort_by_priority(a: StatusEffectInstance, b: StatusEffectInstance) -> bool:
+	return a.effect.priority < b.effect.priority
+
+func apply_effects_for_step(action_data: ActionData, step: StatusEffect.TriggerCondition) -> ActionData:
+	var applicable_effects: Array[StatusEffectInstance] = []
+	while true:
+		applicable_effects.clear()
+		for effect in active_effects:
+			if effect.effect.trigger_condition == step and effect.effect not in action_data.procced_status_effects:
+				applicable_effects.append(effect)
+		
+		if applicable_effects.size() == 0:
+			break
+		
+		applicable_effects.sort_custom(sort_by_priority)
+		action_data = applicable_effects[0].effect.proc_effect_on_action(action_data, applicable_effects[0].stacks)
+	
+	return action_data
+
 
 func initialise_effects_for_battle() -> void:
 	active_effects = initialising_effects.duplicate_deep()
