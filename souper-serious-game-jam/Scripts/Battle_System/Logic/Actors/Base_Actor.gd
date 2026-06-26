@@ -22,6 +22,9 @@ func Take_Damage(_damage : int) -> void:
 func Apply_Effect(effect: StatusEffect, stacks: int, permanent: bool = false, immediate: bool = true) -> void:
 	status_manager.add_effect(effect, stacks, permanent, immediate)
 
+func Apply_Effects_For_Step(action_data: ActionData, step: StatusEffect.TriggerCondition) -> ActionData:
+	return status_manager.apply_effects_for_step(action_data, step)
+
 func Get_Effect_Stacks(effect: StatusEffect) -> int:
 	return status_manager.get_active_stacks_of_effect(effect)
 
