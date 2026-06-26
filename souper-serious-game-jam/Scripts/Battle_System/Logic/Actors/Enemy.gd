@@ -7,12 +7,8 @@ enum Card_Choosing_Behaviour_Type
 	Ordered
 }
 
-<<<<<<< HEAD
 @export var deck: Deck
 
-=======
-@export var deck: EnemyDeck
->>>>>>> 3600fd418d0a5531bd04128c10e69ae99371ad75
 @export var Card_Choosing_Behaviour : Card_Choosing_Behaviour_Type
 
 var Card_To_Play : Card

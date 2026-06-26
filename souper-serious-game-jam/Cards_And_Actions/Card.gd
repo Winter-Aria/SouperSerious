@@ -26,8 +26,13 @@ enum Casting_Type
 
 @export_flags("Self", "Friendlies", "Hostiles") var Applicability_Flags : int = 0
 
+func Get_Action_Data() -> ActionData:
+	return Base_Action.Generate_Action_Data()
+
 func Take_Cards_Action(_world_state : World_State) -> void:
-	Base_Action.Take_Action(_world_state, self)
+	pass
+	
+	#Base_Action.Take_Action(_world_state, self)
 
 func Has_Attribute_List(_attributes : Array[Atrributes]) -> bool:
 	for _att : Atrributes in _attributes:
