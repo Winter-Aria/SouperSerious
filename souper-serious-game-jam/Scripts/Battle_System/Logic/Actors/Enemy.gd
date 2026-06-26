@@ -8,7 +8,6 @@ enum Card_Choosing_Behaviour_Type
 }
 
 @export var deck: Deck
-
 @export var Card_Choosing_Behaviour : Card_Choosing_Behaviour_Type
 
 var Card_To_Play : Card

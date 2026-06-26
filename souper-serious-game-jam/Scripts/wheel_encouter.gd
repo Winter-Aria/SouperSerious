@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var resultLabel: Label
 @export var ruleNameLabel: Label
 @export var continueButton: Button
@@ -7,12 +6,10 @@ extends Node2D
 @export var rules: Array[StatusEffect] = []
 @export var minSpinDuration: float = 1.5
 @export var maxSpinDuration: float = 3.0
-
 var chosenRule: StatusEffect
 var allRules: Array[StatusEffect]
 var isSpinning: bool = false
 var hasSpun: bool = false
-
 signal spinComplete(rule: StatusEffect)
 
 func Setup() -> void:
@@ -22,17 +19,17 @@ func Setup() -> void:
 	continueButton.pressed.connect(OnContinuePressed)
 	clipboardSprite.visible = false
 	$Area2D.input_event.connect(OnWheelClicked)
-
+	
 func OnWheelClicked(viewport, event, shape_idx) -> void:
 	if event is InputEventMouseButton and event.pressed and not isSpinning and not hasSpun:
+		SoundManager.PullLeverAndSpin()
 		PlayStartupAnimation()
-
 func PlayStartupAnimation() -> void:
 	$Area2D.input_event.disconnect(OnWheelClicked)
 	$WheelSprite.play("startup")
 	await $WheelSprite.animation_finished
 	StartSpin()
-
+	
 func StartSpin() -> void:
 	isSpinning = true
 	var ruleIndex = randi() % allRules.size()
@@ -47,14 +44,16 @@ func StartSpin() -> void:
 	tween.tween_property($WheelSprite, "speed_scale", 0.0, decelerateDuration)
 	await tween.finished
 	$WheelSprite.stop()
+	
+	SoundManager.StopLoop(SoundManager.LoopId.WHEEL_SPIN, 0.15)
 	isSpinning = false
 	hasSpun = true
 	OnSpinComplete()
-
+	
 func OnSpinComplete() -> void:
 	spinComplete.emit(chosenRule)
 	ShowClipboard()
-
+	
 func ShowClipboard() -> void:
 	clipboardSprite.visible = true
 	var zoom = $Camera2D.zoom.x
@@ -65,10 +64,12 @@ func ShowClipboard() -> void:
 	var targetY = 50
 	var tween = create_tween()
 	tween.tween_property(clipboardSprite, "position:y", targetY, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+	SoundManager.Play(SoundManager.SfxId.RESULT_DING)
 	await tween.finished
 	ruleNameLabel.text = chosenRule.name
 	resultLabel.text = chosenRule.description
 	continueButton.visible = true
-
 func OnContinuePressed() -> void:
+	SoundManager.Play(SoundManager.SfxId.CARD_SIGN)
 	queue_free()
