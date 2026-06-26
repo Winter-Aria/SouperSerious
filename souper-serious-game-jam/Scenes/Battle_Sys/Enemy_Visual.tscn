@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://xqow3r2rw86p"]
+
+[ext_resource type="PackedScene" uid="uid://b64g3rga5doqa" path="res://Scenes/Battle_Sys/mouse_detector.tscn" id="1_8xgqf"]
+[ext_resource type="Script" uid="uid://6iron87b8dw3" path="res://Scripts/Battle_System/Visual-Interaction/actor_visual.gd" id="1_eel0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67n6w"]
+size = Vector2(89, 62)
+
+[node name="EnemyVisual" type="Node2D" unique_id=1857709057]
+scale = Vector2(5, 5)
+script = ExtResource("1_eel0q")
+Visual_Type = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=702516071]
+position = Vector2(-2, 13)
+color = Color(0.78, 0.13260001, 0.30523986, 1)
+polygon = PackedVector2Array(-19, -25, -26, -41, 17, -45, 15, -27, 23, -20, 37, -19, 54, -14, 29, -5, 15, -9, 26, 5, 47, 6, 44, 18, 30, 18, 16, 15, 5, 6, -3, 4, -4, 13, -17, 16, -40, 12, -32, 4, -17, 6, -8, -6, -27, -13, -42, -18, -25, -19)
+
+[node name="MouseDetector" parent="." unique_id=432678138 instance=ExtResource("1_8xgqf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetector" unique_id=1094996901]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_67n6w")

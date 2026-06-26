@@ -1,4 +1,4 @@
-class_name EnemyDeck
+class_name Deck
 extends Resource
 
 @export var cards: Array[Card]

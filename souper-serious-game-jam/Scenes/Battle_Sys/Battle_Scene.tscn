@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cwmombfsjw7i6"]
+
+[ext_resource type="Script" uid="uid://b065m6ghprsqb" path="res://Scripts/Battle_System/Battle_System.gd" id="1_1of3t"]
+
+[node name="BattleScene" type="Node2D" unique_id=902779073 node_paths=PackedStringArray("Card_Positioning_Node")]
+script = ExtResource("1_1of3t")
+Card_Positioning_Node = NodePath("Card_Positioning_Node")
+
+[node name="Player_Positioner" type="Node2D" parent="." unique_id=870262389]
+position = Vector2(250, 540)
+
+[node name="Enemies_Positioner" type="Node2D" parent="." unique_id=814676455]
+position = Vector2(1670, 540)
+
+[node name="Card_Positioning_Node" type="Node2D" parent="." unique_id=1404884408]
+position = Vector2(960, 880)

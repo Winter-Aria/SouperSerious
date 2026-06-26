@@ -7,7 +7,7 @@ enum Card_Choosing_Behaviour_Type
 	Ordered
 }
 
-@export var deck: EnemyDeck
+@export var deck: Deck
 
 @export var Card_Choosing_Behaviour : Card_Choosing_Behaviour_Type
 
@@ -32,7 +32,7 @@ func choose_next_card() -> void:
 	if Card_Choosing_Behaviour == Card_Choosing_Behaviour_Type.Ordered:
 		chosen_card_index = wrapi(chosen_card_index + 1, 0, deck.cards.size())
 		Card_To_Play = deck.cards[chosen_card_index]
-
+	
 	elif Card_Choosing_Behaviour == Card_Choosing_Behaviour_Type.Random:
 		if current_hand.size() == 0:
 			draw_hand()

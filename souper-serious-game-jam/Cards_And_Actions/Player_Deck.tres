@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://d12f18aof13jm"]
+
+[ext_resource type="Script" uid="uid://6wpcejba1e4h" path="res://Cards_And_Actions/Card.gd" id="1_xqqfk"]
+[ext_resource type="Resource" uid="uid://hbkgi6sj1vkc" path="res://Cards_And_Actions/Cards/Red_Damager.tres" id="2_m23yk"]
+[ext_resource type="Script" uid="uid://dyr87wuxklgcl" path="res://Cards_And_Actions/Deck.gd" id="2_pr044"]
+[ext_resource type="Resource" uid="uid://don58r81pvpe5" path="res://Cards_And_Actions/Cards/Red_Healer.tres" id="3_foe1i"]
+[ext_resource type="Resource" uid="uid://duwt40itidqk5" path="res://Cards_And_Actions/Cards/Yellow_Healer.tres" id="4_tx7ny"]
+
+[resource]
+script = ExtResource("2_pr044")
+cards = Array[ExtResource("1_xqqfk")]([ExtResource("2_m23yk"), ExtResource("2_m23yk"), ExtResource("2_m23yk"), ExtResource("3_foe1i"), ExtResource("3_foe1i"), ExtResource("3_foe1i"), ExtResource("4_tx7ny"), ExtResource("4_tx7ny"), ExtResource("4_tx7ny")])
+metadata/_custom_type_script = "uid://dyr87wuxklgcl"
