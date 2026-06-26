@@ -5,8 +5,10 @@ extends Resource
 
 func Apply_Action(_Data : ActionData) -> void: 
 	print("Action Recieved")
-	#_Data.caster.Get_Effect_Stacks()
 	_Data = _Data.caster.Apply_Effects_For_Step(_Data, StatusEffect.TriggerCondition.OnDeclareAction)
+	var dealt_action_data = _Data.caster.Apply_Action_To_Actor(_Data)
+	if dealt_action_data.action_value != 0:
+		_Data.caster.Apply_Effects_For_Step(_Data, StatusEffect.TriggerCondition.OnDealAction)
 
 func End_Turn(_Ender : Base_Actor.ActorTeam) -> void:
 	print("turn ended!")
