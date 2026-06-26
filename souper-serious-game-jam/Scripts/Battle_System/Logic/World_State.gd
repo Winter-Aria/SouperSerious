@@ -8,12 +8,12 @@ func Apply_Action(_Data : ActionData) -> void:
 	#_Data.caster.Get_Effect_Stacks()
 	_Data = _Data.caster.Apply_Effects_For_Step(_Data, StatusEffect.TriggerCondition.OnDeclareAction)
 
-func End_Turn() -> void:
+func End_Turn(_Ender : Base_Actor.ActorTeam) -> void:
 	print("turn ended!")
 
 func Get_Player() -> Player:
 	for _actor : Base_Actor in Actors:
-		if _actor is Player:
+		if _actor.Team == Base_Actor.ActorTeam.Player:
 			return _actor
 	
 	return null
@@ -21,7 +21,7 @@ func Get_Player() -> Player:
 func Get_Enemies() -> Array[Enemy]:
 	var Enemies : Array[Enemy] = []
 	for _actor : Base_Actor in Actors:
-		if _actor is not Player:
+		if _actor.Team == Base_Actor.ActorTeam.Enemy:
 			Enemies.append(_actor)
 	
 	return Enemies
@@ -32,6 +32,9 @@ func Get_Actors_On_Team(check_team: Base_Actor.ActorTeam) -> Array[Base_Actor]:
 		if actor.Team == check_team:
 			actors_to_return.append(actor)
 	return actors_to_return
+
+func Append_Actors(_state : World_State) -> void:
+	Actors.append_array(_state.Actors)
 
 func Damage_Enemy(_amount : int) -> void:
 	print("damaged enemy for " + str(_amount))

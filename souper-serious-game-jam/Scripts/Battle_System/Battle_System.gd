@@ -9,6 +9,8 @@ const CARD_VISUAL = preload("uid://bkyrueo3rb3e0")
 const ENEMY_VISUAL = preload("uid://xqow3r2rw86p")
 const PLAYER_VISUAL = preload("uid://cumvw24tanyyo")
 
+const STARTING_STATE = preload("uid://c0iutd38g536f")
+
 const CARD_SPACING : float = 125
 const CARD_HAND_LERP_SPEED : float = 0.045
 const CARD_DRAGGED_LERP_SPEED : float = 0.17
@@ -17,7 +19,7 @@ const ENEMY_SPACING : float = 150
 
 @export var Card_Positioning_Node : Node2D
 
-static var Current_World_State : World_State = null
+static var Current_World_State : World_State = STARTING_STATE
 
 var Card_Visuals : Array[Card_Visual] = []
 var Hand_Card_To_Visual_Card : Dictionary[Card, Card_Visual] = {}
@@ -29,10 +31,9 @@ var Scene_Actors : Array[Actor_Visual]
 var Actor_Visual_To_Actor : Dictionary[Actor_Visual, Base_Actor] = {}
 
 func _ready() -> void:
-	Current_World_State = Battle_Load_Manager.Pop_World_State()
-	Current_World_State.World_Player = Battle_Load_Manager.Pop_Player_State()
+	Current_World_State.Append_Actors(Battle_Load_Manager.Pop_World_State())
 	
-	Current_World_State.World_Player.Draw_Cards(5)
+	Current_World_State.Get_Player().Draw_Cards(5)
 	
 	create_actor_visuals()
 	
@@ -44,12 +45,13 @@ func _process(_delta: float) -> void:
 func create_actor_visuals() -> void:
 	var Player_Visual : Actor_Visual = PLAYER_VISUAL.instantiate()
 	Scene_Actors.append(Player_Visual)
-	Actor_Visual_To_Actor[Player_Visual] = Current_World_State.World_Player
+	Actor_Visual_To_Actor[Player_Visual] = Current_World_State.Get_Player()
 	player_positioner.add_child(Player_Visual)
 	
-	var enemy_count : float = Current_World_State.Enemies.size()
+	var enemies : Array[Enemy] = Current_World_State.Get_Enemies()
+	var enemy_count : float = enemies.size()
 	for i in range(enemy_count):
-		var enemy : Enemy = Current_World_State.Enemies[i]
+		var enemy : Enemy = enemies[i]
 		var weight : float 
 		if enemy_count != 1.0:
 			weight = float(i) / (enemy_count-1.0)
@@ -68,7 +70,7 @@ func create_actor_visuals() -> void:
 		Enemy_Visual.position.y = y_offset
 
 func create_card_visuals() -> void:
-	for _card : Card in Current_World_State.World_Player.Hand:
+	for _card : Card in Current_World_State.Get_Player().Hand:
 		var New_Visual : Card_Visual = CARD_VISUAL.instantiate()
 		Card_Visuals.append(New_Visual)
 		Card_Positioning_Node.add_child(New_Visual)
@@ -147,7 +149,7 @@ func Attempt_Get_Action(_card : Card) -> ActionData:
 	
 	var Data : ActionData = _card.Get_Action_Data()
 	Data.target = Actor_Action_Applies_To
-	Data.caster = Current_World_State.World_Player
+	Data.caster = Current_World_State.Get_Player()
 	
 	return Data
 
@@ -167,11 +169,11 @@ func attempt_apply_card(_card : Card) -> Base_Actor:
 	return null
 
 func Remove_Card(_card : Card) -> void:
-	Current_World_State.World_Player.Remove_Card(_card)
+	Current_World_State.Get_Player().Remove_Card(_card)
 	var Visual = Hand_Card_To_Visual_Card[_card]
 	Card_Visuals.erase(Visual)
 	Hand_Card_To_Visual_Card.erase(_card)
 	Visual.queue_free()
 
 func _on_end_turn_button_pressed() -> void:
-	pass # Replace with function body.
+	Current_World_State.End_Turn(Base_Actor.ActorTeam.Player)
