@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="World_State" format=3 uid="uid://c0iutd38g536f"]
+
+[ext_resource type="Script" uid="uid://ca8vpvlbj24am" path="res://Scripts/Battle_System/Logic/Actors/Base_Actor.gd" id="1_m1ag5"]
+[ext_resource type="Resource" uid="uid://bt4pythk2hnh1" path="res://Scripts/Battle_System/Logic/Actors/Player.tres" id="2_kogkc"]
+[ext_resource type="Script" uid="uid://jvknlwxa8k4m" path="res://Scripts/Battle_System/Logic/World_State.gd" id="2_rojsh"]
+
+[resource]
+script = ExtResource("2_rojsh")
+Actors = Array[ExtResource("1_m1ag5")]([ExtResource("2_kogkc")])
+metadata/_custom_type_script = "uid://jvknlwxa8k4m"

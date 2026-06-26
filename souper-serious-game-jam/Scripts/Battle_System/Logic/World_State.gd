@@ -26,6 +26,8 @@ func Get_Enemies() -> Array[Enemy]:
 	
 	return Enemies
 
+func Append_Actors(_state : World_State) -> void:
+	Actors.append_array(_state.Actors)
 
 func Damage_Enemy(_amount : int) -> void:
 	print("damaged enemy for " + str(_amount))

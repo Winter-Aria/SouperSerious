@@ -7,7 +7,7 @@ const BATTLE_SCENE = preload("uid://cwmombfsjw7i6")
 
 func _ready() -> void:
 	Battle_Load_Manager.Queue_World_State(TEST_SCENARIO)
-	Battle_Load_Manager.Store_Player_State(PLAYER)
+	Battle_System.Current_World_State.Actors.append(PLAYER)
 	
 	await get_tree().create_timer(0.02).timeout
 	

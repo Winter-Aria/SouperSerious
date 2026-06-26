@@ -9,6 +9,8 @@ const CARD_VISUAL = preload("uid://bkyrueo3rb3e0")
 const ENEMY_VISUAL = preload("uid://xqow3r2rw86p")
 const PLAYER_VISUAL = preload("uid://cumvw24tanyyo")
 
+const STARTING_STATE = preload("uid://c0iutd38g536f")
+
 const CARD_SPACING : float = 125
 const CARD_HAND_LERP_SPEED : float = 0.045
 const CARD_DRAGGED_LERP_SPEED : float = 0.17
@@ -17,7 +19,7 @@ const ENEMY_SPACING : float = 150
 
 @export var Card_Positioning_Node : Node2D
 
-static var Current_World_State : World_State = null
+static var Current_World_State : World_State = STARTING_STATE
 
 var Card_Visuals : Array[Card_Visual] = []
 var Hand_Card_To_Visual_Card : Dictionary[Card, Card_Visual] = {}
@@ -29,8 +31,7 @@ var Scene_Actors : Array[Actor_Visual]
 var Actor_Visual_To_Actor : Dictionary[Actor_Visual, Base_Actor] = {}
 
 func _ready() -> void:
-	Current_World_State = Battle_Load_Manager.Pop_World_State()
-	Current_World_State.Actors.append(Battle_Load_Manager.Pop_Player_State())
+	Current_World_State.Append_Actors(Battle_Load_Manager.Pop_World_State())
 	
 	Current_World_State.Get_Player().Draw_Cards(5)
 	
