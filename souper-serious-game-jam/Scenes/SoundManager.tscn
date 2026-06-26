@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://osvxnf31qemx"]
+
+[ext_resource type="Script" uid="uid://3tjn5y4oggm" path="res://Scripts/SoundManager.gd" id="1_eh0l7"]
+[ext_resource type="AudioStream" uid="uid://blskkyli08rgm" path="res://Audio/Signing.wav" id="2_4m8jc"]
+[ext_resource type="AudioStream" uid="uid://gjchc7awr52s" path="res://Audio/Ding.wav" id="3_8mdu8"]
+[ext_resource type="AudioStream" uid="uid://bc7latpromjyt" path="res://Audio/lever.wav" id="3_i4wp4"]
+[ext_resource type="AudioStream" uid="uid://dkfthm8satem2" path="res://Audio/SpinnerWheel.wav" id="4_i4wp4"]
+
+[node name="Node" type="Node" unique_id=1771181183]
+script = ExtResource("1_eh0l7")
+cardSign = ExtResource("2_4m8jc")
+leverPull = ExtResource("3_i4wp4")
+resultDing = ExtResource("3_8mdu8")
+wheelSpin = ExtResource("4_i4wp4")
