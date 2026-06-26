@@ -1,9 +1,7 @@
 class_name World_State
 extends Resource
 
-var World_Player : Player = null
-
-@export var Enemies : Array[Enemy] = []
+@export var Actors : Array[Base_Actor] = []
 
 func Apply_Action(_Data : ActionData) -> void: 
 	print("Action Recieved")
@@ -11,6 +9,22 @@ func Apply_Action(_Data : ActionData) -> void:
 
 func End_Turn() -> void:
 	print("turn ended!")
+
+func Get_Player() -> Player:
+	for _actor : Base_Actor in Actors:
+		if _actor is Player:
+			return _actor
+	
+	return null
+
+func Get_Enemies() -> Array[Enemy]:
+	var Enemies : Array[Enemy] = []
+	for _actor : Base_Actor in Actors:
+		if _actor is not Player:
+			Enemies.append(_actor)
+	
+	return Enemies
+
 
 func Damage_Enemy(_amount : int) -> void:
 	print("damaged enemy for " + str(_amount))
