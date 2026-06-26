@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://dd1mjulp6foks"
 script = ExtResource("1_h1can")
 name = "Expropriation"
 description = "Delete one random card from your opening hand every turn (returned at the end of battle)."
-trigger_condition = 7
+trigger_condition = 3
 effect = SubResource("Resource_gquo6")
 metadata/_custom_type_script = "uid://bootffkdxrrqw"

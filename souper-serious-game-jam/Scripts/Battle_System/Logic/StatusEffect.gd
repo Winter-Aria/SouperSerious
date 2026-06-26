@@ -3,11 +3,7 @@ extends Resource
 
 enum TriggerCondition{
 	None,
-	OnDeclareDamage,
-	OnDeclareHeal,
 	OnDeclareAction,
-	OnDealDamage,
-	OnDealHeal,
 	OnDealAction,
 	OnTurnBegin,
 	OnTurnEnd

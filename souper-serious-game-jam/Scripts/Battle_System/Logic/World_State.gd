@@ -8,6 +8,7 @@ var World_Player : Player = null
 func Apply_Action(_Data : ActionData) -> void: 
 	print("Action Recieved")
 	#_Data.caster.Get_Effect_Stacks()
+	_Data = _Data.caster.Apply_Effects_For_Step(_Data, StatusEffect.TriggerCondition.OnDeclareAction)
 
 func End_Turn() -> void:
 	print("turn ended!")
