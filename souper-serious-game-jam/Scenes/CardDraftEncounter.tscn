@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://nlrc44u41q4n"]
+
+[ext_resource type="Script" uid="uid://bhelliuucci43" path="res://Scenes/card_draft_encounter.gd" id="1_fvj8t"]
+
+[node name="CardDraftEncounter" type="Node2D" unique_id=661826748 node_paths=PackedStringArray("camera", "cardContainer")]
+script = ExtResource("1_fvj8t")
+camera = NodePath("Camera2D")
+cardContainer = NodePath("HBoxContainer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1875263925]
+zoom = Vector2(1.48, 1.48)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1474303274]
+offset_right = 40.0
+offset_bottom = 40.0

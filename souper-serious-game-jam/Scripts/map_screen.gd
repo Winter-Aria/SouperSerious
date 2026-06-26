@@ -53,7 +53,6 @@ class avoidable_map_obj:
 		size = size_
 
 func SpawnMapDecorations(nodes: Array[MapNode]):
-	# convert MapNodes into format with .position attribute
 	var things_to_avoid = nodes.map(func(x):
 		return avoidable_map_obj.new(
 			x.screenPos + Vector2(75, 75),
@@ -62,21 +61,16 @@ func SpawnMapDecorations(nodes: Array[MapNode]):
 	)
 	
 	for y in range(1000):
-		# generate random position within background
 		var bg_size = $Background.texture.get_size() * $Background.scale * 0.8
 		var bg_pos = $Background.position
 		var pos = Vector2(randf_range(0, bg_size.x), randf_range(0, bg_size.y)) - bg_size / 2 + bg_pos
-		pos = pos / $NodeContainer.scale # scale to counter nodecontainer scale
+		pos = pos / $NodeContainer.scale
 		
-		# attempt to spawn a decoration and add it to the list of objects to avoid
-		# if the spawn succeeds
 		var decoration = SpawnMapDecoration(pos, DistToClosest(things_to_avoid, pos))
 		if decoration:
 			var size = decoration.texture.get_size().length() / 2
 			things_to_avoid.append(avoidable_map_obj.new(decoration.position, size))
 
-# calcualate the distance to the closest position in a list
-# of objects to a target point
 func DistToClosest(things_to_avoid, target: Vector2):
 	var closest = INF
 	for thing in things_to_avoid:
@@ -86,7 +80,6 @@ func DistToClosest(things_to_avoid, target: Vector2):
 	return sqrt(max(0, closest))
 
 func SpawnMapDecoration(pos, distance):
-	# pick a random (weighted) texture
 	var MapDecorationTextures = MapDecorations.map(func(x): return x.image)
 	var MapDecorationWeights = MapDecorations.map(func(x): return x.weight)
 	var rng = RandomNumberGenerator.new()
@@ -96,7 +89,7 @@ func SpawnMapDecoration(pos, distance):
 	if distance < texSize * 1.4:
 		return
 	
-	var decoration = Sprite2D.new()	
+	var decoration = Sprite2D.new()
 	decoration.texture = texture
 	decoration.position = pos
 	decoration.rotation_degrees = randf_range(-10, 10)
@@ -146,10 +139,10 @@ func TriggerEncounter(node: MapNode) -> void:
 			self.visible = false
 			set_process_input(false)
 		MapNode.NodeType.GLOBAL_RULE:
-			var ruleInstance = GlobalRuleEncounterScene.instantiate()
-			get_tree().root.add_child(ruleInstance)
-			ruleInstance.Setup(self)
-			ruleInstance.tree_exited.connect(OnEncounterClosed)
+			var draftInstance = GlobalRuleEncounterScene.instantiate()
+			get_tree().root.add_child(draftInstance)
+			draftInstance.Setup(CardPool.AllCards)
+			draftInstance.tree_exited.connect(OnEncounterClosed)
 			self.visible = false
 			set_process_input(false)
 		MapNode.NodeType.COMBAT:

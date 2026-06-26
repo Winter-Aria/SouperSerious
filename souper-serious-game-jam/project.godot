@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 GameModifers="*uid://dk8wojhku8q3x"
 SceneTransition="*uid://rf28uygmmset"
 SoundManager="*uid://osvxnf31qemx"
+CardPool="*uid://tlcjhr67qded"
 
 [display]
 

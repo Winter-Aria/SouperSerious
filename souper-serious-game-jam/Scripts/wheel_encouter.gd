@@ -51,6 +51,7 @@ func StartSpin() -> void:
 	OnSpinComplete()
 	
 func OnSpinComplete() -> void:
+	Battle_System.Current_World_State.Get_Player().Apply_Effect(chosenRule, 1, true)
 	spinComplete.emit(chosenRule)
 	ShowClipboard()
 	
