@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://yt7t31dtksyt"]
+
+[ext_resource type="Script" uid="uid://el3shv73h4uq" path="res://Scripts/endscreen.gd" id="1_uv0vl"]
+[ext_resource type="FontFile" uid="uid://b876rm4ohi1rt" path="res://Art/PeaberryBase.ttf" id="2_6njhj"]
+
+[node name="Endscreen" type="CanvasLayer" unique_id=1511826802]
+script = ExtResource("1_uv0vl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1390379526]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Text1" type="RichTextLabel" parent="." unique_id=1878488214]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.25
+offset_top = -61.0
+offset_right = 546.25
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_6njhj")
+theme_override_font_sizes/normal_font_size = 36
+text = "You did it. You killed the head of a SOCING-sponsored media conglomerate. Finally some justice for this world."
+horizontal_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="." unique_id=1475029572]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.25
+offset_top = -113.0
+offset_right = 546.25
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_6njhj")
+theme_override_font_sizes/normal_font_size = 36
+text = "His son takes up his place. Rurdoch was killed in an act of terrorism by a mentally ill individual, encouraged by anti-state propaganda on social media. 
+
+SOCING double the funds they grant to the conglomerate and crack down on independent media."
+horizontal_alignment = 1
+
+[node name="Text3" type="RichTextLabel" parent="." unique_id=1500231035]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.25
+offset_top = -20.0
+offset_right = 546.25
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_6njhj")
+theme_override_font_sizes/normal_font_size = 36
+text = "Nobody will ever know what you did for the world."
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=204787775]
+one_shot = true
