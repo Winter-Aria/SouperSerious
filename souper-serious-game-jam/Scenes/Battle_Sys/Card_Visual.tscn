@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://bkyrueo3rb3e0"]
 
 [ext_resource type="Script" uid="uid://d3h2dm1205w7g" path="res://Scripts/Battle_System/Visual-Interaction/Card_Visual.gd" id="1_25bqn"]
+[ext_resource type="PackedScene" uid="uid://b64g3rga5doqa" path="res://Scenes/Battle_Sys/mouse_detector.tscn" id="2_212dd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67n6w"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33s4q"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvw6x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67n6w"]
+size = Vector2(480, 640)
 
 [node name="Card_Visual" type="Node2D" unique_id=1004147954]
 texture_filter = 1
@@ -17,27 +15,42 @@ script = ExtResource("1_25bqn")
 scale = Vector2(10, 10)
 polygon = PackedVector2Array(-16, 32, 16, 32, 20, 30, 22, 28, 24, 24, 24, -24, 22, -28, 20, -30, 16, -32, -16, -32, -20, -30, -22, -28, -24, -24, -24, 24, -22, 28, -20, 30)
 
-[node name="Control" type="Button" parent="." unique_id=1350125753]
+[node name="Control" type="Control" parent="." unique_id=1348094202]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -240.0
 offset_top = -320.0
 offset_right = 240.0
 offset_bottom = 320.0
 size_flags_horizontal = 4
 mouse_filter = 1
-theme_override_styles/normal = SubResource("StyleBoxEmpty_67n6w")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_33s4q")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_vvw6x")
 
-[node name="Cost_Lable" type="Label" parent="Control" unique_id=1891662255]
-layout_mode = 1
-offset_left = 45.0
-offset_top = 18.0
-offset_right = 73.0
-offset_bottom = 85.0
+[node name="Cost_Lable" type="Label" parent="Control" unique_id=1019119112]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 140.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -4
 theme_override_font_sizes/font_size = 96
 text = "a"
+
+[node name="Name_lable" type="Label" parent="Control" unique_id=1891662255]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -374.0
+offset_top = 50.0
+offset_right = -73.0
+offset_bottom = 182.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 40
+text = "title"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1970364088]
 layout_mode = 1
@@ -58,9 +71,11 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 45
 text = "Sample Text"
 autowrap_mode = 3
 
-[connection signal="button_down" from="Control" to="." method="_on_control_button_down"]
-[connection signal="button_up" from="Control" to="." method="_on_control_button_up"]
+[node name="MouseDetector" parent="." unique_id=432678138 instance=ExtResource("2_212dd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetector" unique_id=1821103790]
+shape = SubResource("RectangleShape2D_67n6w")
